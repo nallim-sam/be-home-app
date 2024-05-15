@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".service.CrearPisoActivity"
+    android:background="@color/backgroundWhite">
+
+    <!-- Barra de navegación superior (Toolbar) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/darkGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crea_tu_piso"
+            android:textColor="@color/icon"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/backgrounGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <!-- Contenedor principal (LinearLayout) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:ignore="ExtraText">
+
+            <!-- Edit Text para nombre del elemento -->
+            <EditText
+                android:id="@+id/editTextName"
+                android:inputType="text"
+                android:autofillHints="name"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="Nombre del Piso" />
+
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16sp"
+                android:text="MIEMBROS"
+                android:textStyle="bold"
+                android:textSize="16sp"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Edit Text para ingresar usuarios -->
+            <EditText
+                android:id="@+id/editTextUsers"
+                android:autofillHints="name"
+                android:inputType="textPersonName"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="Usuarios del Piso" />
+
+            <ImageButton
+                android:id="@+id/addImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_add"
+                android:contentDescription="Botón para agregar usuario"/>
+
+
+        </LinearLayout>
+
+            <View
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/estancias"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+
+            <View
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerComedor"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0"
+                    />
+
+                <TextView
+                    android:id="@+id/tvComedor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Comedor" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerSalon"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0"
+                     />
+
+                <TextView
+                    android:id="@+id/tvSalon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Salón" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerCocina"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0"/>
+
+                <TextView
+                    android:id="@+id/tvCocina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Cocina" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerBano"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0" />
+
+                <TextView
+                    android:id="@+id/tvBano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Baño" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerPasillo"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0"
+                     />
+
+                <TextView
+                    android:id="@+id/tvPasillo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Pasillo / Entrada" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <NumberPicker
+                    android:id="@+id/numberPickerBalcon"
+                    android:layout_width="35dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center"
+                    android:max="10"
+                    android:min="0"
+                     />
+
+                <TextView
+                    android:id="@+id/tvBalcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Balcon / Terraza" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+            <!-- Botón para crear el piso -->
+            <Button
+                android:id="@+id/buttonCreateHome"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Crear Piso"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/darkPurple" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
