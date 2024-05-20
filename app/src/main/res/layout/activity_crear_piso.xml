@@ -60,46 +60,6 @@
                 android:layout_height="56dp"
                 android:hint="Nombre del Piso" />
 
-            <!--<TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
-                android:text="MIEMBROS"
-                android:textStyle="bold"
-                android:textSize="16sp"/>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <!-- Edit Text para ingresar usuarios -->
-            <EditText
-                android:id="@+id/editTextUsers"
-                android:autofillHints="name"
-                android:inputType="textPersonName"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="Usuarios del Piso" />
-
-            <ImageButton
-                android:id="@+id/addImageButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_add"
-                android:contentDescription="Botón para agregar usuario"/>
-
-
-        </LinearLayout>
-
-            <View
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0"
-                android:background="@color/separationGrey" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -300,6 +260,16 @@
                 android:text="Crear Piso"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/darkPurple" />
+            <Button
+                android:id="@+id/buttonJoinHome"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Unirse a un Piso"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/lightPurple" />
+
+
 
         </LinearLayout>
 

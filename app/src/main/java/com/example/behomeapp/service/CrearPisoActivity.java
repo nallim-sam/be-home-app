@@ -9,7 +9,7 @@ import android.widget.NumberPicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.behome.R;
+import com.example.behomeapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,6 @@ public class CrearPisoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_piso);
 
         etName = findViewById(R.id.editTextName);
-        etUsers = findViewById(R.id.editTextUsers);
 
         numberPickerBano = findViewById(R.id.numberPickerBano);
         numberPickerPasillo = findViewById(R.id.numberPickerPasillo);
@@ -39,7 +38,7 @@ public class CrearPisoActivity extends AppCompatActivity {
         numberPickerBalcon = findViewById(R.id.numberPickerBalcon);
 
         buttonCreateHome = findViewById(R.id.buttonCreateHome);
-        addImageButton = findViewById(R.id.addImageButton);
+
 
         addImageButton.setOnClickListener(new View.OnClickListener() {
             @Override

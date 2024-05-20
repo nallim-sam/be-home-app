@@ -1,6 +1,6 @@
 package com.example.behomeapp.model;
 
-import com.example.behome.enums.EstanciaEnum;
+import com.example.behomeapp.enums.EstanciaEnum;
 
 import java.util.Date;
 

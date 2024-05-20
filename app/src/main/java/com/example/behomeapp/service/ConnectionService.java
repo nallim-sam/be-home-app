@@ -16,8 +16,7 @@ public class ConnectionService {
      * @return objeto Connection
      * @throws SQLException Si se produce un error al acceder a la BBDD
      */
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+    public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL_XAMPP, USER, PASSWORD);
     }
 }
