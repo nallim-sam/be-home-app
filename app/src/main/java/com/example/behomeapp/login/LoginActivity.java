@@ -20,9 +20,9 @@ import java.sql.SQLException;
 public class LoginActivity extends AppCompatActivity {
 
     private final static String LOGIN_QUERY = "SELECT * " +
-            "FROM users " +
+            "FROM usuario " +
             "WHERE email = ? " +
-            "AND password = ?";
+            "AND contrasena = ?";
     private final static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     private EditText editTextEmail;

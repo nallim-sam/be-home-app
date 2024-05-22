@@ -30,6 +30,20 @@ android {
 
 dependencies {
 
+
+    // FIREBASE
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+
+    // Add the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation 'com.google.firebase:firebase-auth:23.0.0'
+    implementation 'com.google.firebase:firebase-firestore:25.0.0'
+
+
     // conexion bbdd
     implementation 'mysql:mysql-connector-java:8.0.33'
 
@@ -50,9 +64,9 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
     // Material design 3
-    implementation "androidx.compose.material3:material3:1.1.2"
-    implementation "androidx.compose.material3:material3-window-size-class:1.1.2"
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation "androidx.compose.material3:material3:1.2.1"
+    implementation "androidx.compose.material3:material3-window-size-class:1.2.1"
+    implementation 'com.google.android.material:material:1.12.0'
 
     // default
     implementation 'androidx.appcompat:appcompat:1.6.1'
