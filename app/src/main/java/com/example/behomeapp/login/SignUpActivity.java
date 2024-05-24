@@ -2,8 +2,7 @@ package com.example.behomeapp.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,61 +10,48 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.behomeapp.R;
-import com.example.behomeapp.service.ConnectionService;
 import com.example.behomeapp.service.CrearPisoActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private static final String SIGNUP_QUERY = "INSERT INTO USUARIO (username, nombre, apellidos, email, contrasenya) VALUES (?, ?, ?, ?, ?)";
     private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-    private EditText etUsername, etName, etLastName, etEmail, etPassword, etConfirmPassword;
-    private String txtUsername, txtName, txtLastName, txtEmail, txtPassword, txtConfirmPassword;
-    private ExecutorService executorService;
-    private Handler mainHandler;
+    private EditText etName, etEmail, etPassword, etConfirmPassword;
+    private String txtName, txtEmail, txtPassword, txtConfirmPassword;
+    private Button buttonRegister, buttonVolver;
+
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        etUsername = findViewById(R.id.etUsername);
         etName = findViewById(R.id.etName);
-        etLastName = findViewById(R.id.etLastname);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        Button buttonRegister = findViewById(R.id.buttonSignUp);
-        Button buttonVolver = findViewById(R.id.buttonVolver);
+        buttonRegister = findViewById(R.id.buttonSignUp);
+        buttonVolver = findViewById(R.id.buttonVolver);
 
-        executorService = Executors.newSingleThreadExecutor();
-        mainHandler = new Handler(Looper.getMainLooper());
 
         buttonRegister.setOnClickListener(v -> {
 
-            txtUsername = etUsername.getText().toString().trim();
             txtName = etName.getText().toString().trim();
-            txtLastName = etLastName.getText().toString().trim();
             txtEmail = etEmail.getText().toString().trim();
             txtPassword = etPassword.getText().toString().trim();
             txtConfirmPassword = etConfirmPassword.getText().toString().trim();
 
-            if (txtUsername.isEmpty()) {
-                etUsername.setError("El nombre de usuario es un campo obligatorio.");
-                return;
-            }
+
             if (txtName.isEmpty()) {
                 etName.setError("El nombre es un campo obligatorio.");
-                return;
-            }
-            if (txtLastName.isEmpty()) {
-                etLastName.setError("El apellido es un campo obligatorio.");
                 return;
             }
             if (txtEmail.isEmpty()) {
@@ -86,10 +72,8 @@ public class SignUpActivity extends AppCompatActivity {
             }
             if (!txtPassword.equals(txtConfirmPassword)) {
                 etConfirmPassword.setError("Las contraseñas deben coincidir.");
-                return;
             }
-
-            executorService.execute(() -> registerUser(txtUsername, txtName, txtLastName, txtEmail, txtPassword));
+            SignUpUser(txtName, txtEmail,txtPassword);
         });
 
         // Volver a la pagina de Login
@@ -99,45 +83,29 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(final String txtUsername, final String txtName, final String txtLastName,
-                              final String txtEmail, final String txtPassword) {
-        try (final Connection connection = ConnectionService.getConnection()) {
+    private void SignUpUser(String txtName, String txtEmail, String txtPassword) {
+        buttonRegister.setVisibility(View.INVISIBLE);
 
-            try (final PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_QUERY)) {
+        mAuth.createUserWithEmailAndPassword(txtEmail, txtPassword).addOnSuccessListener(authResult -> {
+            String userId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
-                preparedStatement.setString(1, txtUsername);
-                preparedStatement.setString(2, txtName);
-                preparedStatement.setString(3, txtLastName);
-                preparedStatement.setString(4, txtEmail);
-                preparedStatement.setString(5, txtPassword);
+            // Crear un HashMap para representar los datos del usuario
+            Map<String, Object> nuevoUsuario = new HashMap<>();
+            nuevoUsuario.put("userId", userId);
+            nuevoUsuario.put("nombre", txtName);
+            nuevoUsuario.put("email", txtEmail);
+            nuevoUsuario.put("contrasenya", txtPassword);
 
-                int filasInsertadas = preparedStatement.executeUpdate();
+            // Guarda el nuevo usuario en Cloud Firestore
+            db.collection("usuario").document(userId).set(nuevoUsuario);
 
-                mainHandler.post(() -> {
-                    if (filasInsertadas > 0) {
-                        Toast.makeText(SignUpActivity.this, "Registrándose", Toast.LENGTH_SHORT).show();
-                        finish(); // Cerrar la actividad de registro después de un registro exitoso
-                    } else {
-                        Toast.makeText(SignUpActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-        } catch (SQLException e) {
-            mainHandler.post(() -> Toast.makeText(SignUpActivity.this, "Se ha producido un error al registrar el nuevo usuario.", Toast.LENGTH_SHORT).show());
-            throw new RuntimeException("ERROR: Se ha producido un error al acceder a la BBDD", e);
-        }
-
-        mainHandler.post(() -> {
             Toast.makeText(SignUpActivity.this, "Registro Completado", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);
             startActivity(intent);
-        });
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        executorService.shutdown();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(SignUpActivity.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            buttonRegister.setVisibility(View.VISIBLE);
+        });
     }
 }
