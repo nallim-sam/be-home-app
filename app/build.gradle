@@ -30,22 +30,13 @@ android {
 
 dependencies {
 
-
-    // FIREBASE
-
-    // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-
-    // Add the dependency for the Firebase Authentication library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation("com.google.firebase:firebase-auth")
-
-    implementation 'com.google.firebase:firebase-auth:23.0.0'
-    implementation 'com.google.firebase:firebase-firestore:25.0.0'
-
-
     // conexion bbdd
-    implementation 'mysql:mysql-connector-java:8.0.33'
+   // implementation 'mysql:mysql-connector-java:8.0.33'
+   // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['mysql-connector-java-5.1.6-bin.jar'])
+
+    // MariaDB JDBC driver
+    //implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
 
     // navegacion
     def nav_version = "2.7.6"

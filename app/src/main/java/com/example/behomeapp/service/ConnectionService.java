@@ -6,11 +6,9 @@ import java.sql.SQLException;
 
 public class ConnectionService {
 
-    private static final String URL_XAMPP = "jdbc:mysql://127.0.0.1:3307/behome";
-    private static final String URL_WORKBENCH = "jdbc:mysql://localhost:3306/behome";
+    private static final String URL_XAMPP = "jdbc:mysql://10.0.2.2:3307/behome";
     private static final String USER = "root";
-    private static final String PASSWORD = "Camaleon98";
-    private static final String PASSWORD_WORKBENCH = "Camaleon98";
+    private static final String PASSWORD_XAMPP = "";
 
     /**
      * Establece una conexión con la base de datos
@@ -19,6 +17,13 @@ public class ConnectionService {
      * @throws SQLException Si se produce un error al acceder a la BBDD
      */
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL_WORKBENCH, USER, PASSWORD_WORKBENCH);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection(URL_XAMPP, USER, PASSWORD_XAMPP);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Error al cargar el controlador MySQL JDBC", e);
+        }
+
     }
+
 }

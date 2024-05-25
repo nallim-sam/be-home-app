@@ -22,11 +22,11 @@ import java.util.concurrent.Executors;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private static final String SIGNUP_QUERY = "INSERT INTO USUARIO (username, nombre, apellidos, email, contrasenya) VALUES (?, ?, ?, ?, ?)";
+    private static final String SIGNUP_QUERY = "INSERT INTO USUARIO (nombre, email, contrasenya) VALUES (?, ?, ?)";
     private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-    private EditText etUsername, etName, etLastName, etEmail, etPassword, etConfirmPassword;
-    private String txtUsername, txtName, txtLastName, txtEmail, txtPassword, txtConfirmPassword;
+    private EditText etName, etEmail, etPassword, etConfirmPassword;
+    private String txtName, txtEmail, txtPassword, txtConfirmPassword;
     private ExecutorService executorService;
     private Handler mainHandler;
 
@@ -35,9 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        etUsername = findViewById(R.id.etUsername);
         etName = findViewById(R.id.etName);
-        etLastName = findViewById(R.id.etLastname);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
@@ -49,23 +47,13 @@ public class SignUpActivity extends AppCompatActivity {
 
         buttonRegister.setOnClickListener(v -> {
 
-            txtUsername = etUsername.getText().toString().trim();
             txtName = etName.getText().toString().trim();
-            txtLastName = etLastName.getText().toString().trim();
             txtEmail = etEmail.getText().toString().trim();
             txtPassword = etPassword.getText().toString().trim();
             txtConfirmPassword = etConfirmPassword.getText().toString().trim();
 
-            if (txtUsername.isEmpty()) {
-                etUsername.setError("El nombre de usuario es un campo obligatorio.");
-                return;
-            }
             if (txtName.isEmpty()) {
                 etName.setError("El nombre es un campo obligatorio.");
-                return;
-            }
-            if (txtLastName.isEmpty()) {
-                etLastName.setError("El apellido es un campo obligatorio.");
                 return;
             }
             if (txtEmail.isEmpty()) {
@@ -89,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
                 return;
             }
 
-            executorService.execute(() -> registerUser(txtUsername, txtName, txtLastName, txtEmail, txtPassword));
+            executorService.execute(() -> registerUser(txtName, txtEmail, txtPassword));
         });
 
         // Volver a la pagina de Login
@@ -99,24 +87,22 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(final String txtUsername, final String txtName, final String txtLastName,
-                              final String txtEmail, final String txtPassword) {
+    private void registerUser(String txtName, String txtEmail, String txtPassword) {
         try (final Connection connection = ConnectionService.getConnection()) {
 
             try (final PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_QUERY)) {
 
-                preparedStatement.setString(1, txtUsername);
-                preparedStatement.setString(2, txtName);
-                preparedStatement.setString(3, txtLastName);
-                preparedStatement.setString(4, txtEmail);
-                preparedStatement.setString(5, txtPassword);
+                preparedStatement.setString(1, txtName);
+                preparedStatement.setString(2, txtEmail);
+                preparedStatement.setString(3, txtPassword);
 
                 int filasInsertadas = preparedStatement.executeUpdate();
 
                 mainHandler.post(() -> {
                     if (filasInsertadas > 0) {
                         Toast.makeText(SignUpActivity.this, "Registrándose", Toast.LENGTH_SHORT).show();
-                        finish(); // Cerrar la actividad de registro después de un registro exitoso
+                        Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(SignUpActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
                     }
@@ -127,12 +113,6 @@ public class SignUpActivity extends AppCompatActivity {
             mainHandler.post(() -> Toast.makeText(SignUpActivity.this, "Se ha producido un error al registrar el nuevo usuario.", Toast.LENGTH_SHORT).show());
             throw new RuntimeException("ERROR: Se ha producido un error al acceder a la BBDD", e);
         }
-
-        mainHandler.post(() -> {
-            Toast.makeText(SignUpActivity.this, "Registro Completado", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);
-            startActivity(intent);
-        });
     }
 
     @Override

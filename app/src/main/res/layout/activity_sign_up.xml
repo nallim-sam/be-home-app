@@ -51,28 +51,12 @@
             tools:ignore="ExtraText">
 
             <EditText
-                android:id="@+id/etUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:ems="10"
-                android:hint="Nombre Usuario"
-                android:inputType="text" />
-            <EditText
                 android:id="@+id/etName"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:hint="Nombre"
-                android:inputType="text" />
-            <EditText
-                android:id="@+id/etLastname"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:ems="10"
-                android:hint="Apellidos"
                 android:inputType="text" />
 
             <EditText
