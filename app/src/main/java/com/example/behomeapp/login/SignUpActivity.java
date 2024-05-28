@@ -1,6 +1,7 @@
 package com.example.behomeapp.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,7 +23,7 @@ import java.util.concurrent.Executors;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private static final String SIGNUP_QUERY = "INSERT INTO USUARIO (nombre, email, contrasenya) VALUES (?, ?, ?)";
+    private static final String SIGNUP_QUERY = "INSERT INTO USUARIO (nombre, email, contrasena) VALUES (?, ?, ?)";
     private static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     private EditText etName, etEmail, etPassword, etConfirmPassword;
@@ -100,6 +101,12 @@ public class SignUpActivity extends AppCompatActivity {
 
                 mainHandler.post(() -> {
                     if (filasInsertadas > 0) {
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("email", txtEmail);
+                        editor.apply();
+
                         Toast.makeText(SignUpActivity.this, "Registrándose", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);
                         startActivity(intent);

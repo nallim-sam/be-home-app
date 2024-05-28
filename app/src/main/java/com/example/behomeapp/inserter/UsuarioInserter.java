@@ -1,4 +1,4 @@
 package com.example.behomeapp.inserter;
 
-public class ProductInserter {
+public class UsuarioInserter {
 }

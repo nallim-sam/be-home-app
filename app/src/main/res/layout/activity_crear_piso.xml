@@ -51,6 +51,14 @@
             android:padding="16dp"
             tools:ignore="ExtraText">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Introduce el nombre del Piso:"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
             <!-- Edit Text para nombre del elemento -->
             <EditText
                 android:id="@+id/editTextName"
@@ -58,208 +66,45 @@
                 android:autofillHints="name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="Nombre del Piso" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/estancias"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
-
-
-            <View
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0"
-                android:background="@color/separationGrey" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerComedor"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0"
-                    />
-
-                <TextView
-                    android:id="@+id/tvComedor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Comedor" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerSalon"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0"
-                     />
-
-                <TextView
-                    android:id="@+id/tvSalon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Salón" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerCocina"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0"/>
-
-                <TextView
-                    android:id="@+id/tvCocina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Cocina" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerBano"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0" />
-
-                <TextView
-                    android:id="@+id/tvBano"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Baño" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerPasillo"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0"
-                     />
-
-                <TextView
-                    android:id="@+id/tvPasillo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Pasillo / Entrada" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <NumberPicker
-                    android:id="@+id/numberPickerBalcon"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:descendantFocusability="blocksDescendants"
-                    android:gravity="center"
-                    android:max="10"
-                    android:min="0"
-                     />
-
-                <TextView
-                    android:id="@+id/tvBalcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="Balcon / Terraza" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0"
-                android:background="@color/separationGrey" />
+                android:hint="Nombre del Piso"
+                android:layout_marginTop="16dp"/>
 
             <!-- Botón para crear el piso -->
             <Button
                 android:id="@+id/buttonCreateHome"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Crear Piso"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/darkPurple" />
+
+
+            <View
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey"
+               android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="O introduce el código para unirte:"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <!-- Edit Text para nombre del elemento -->
+            <EditText
+                android:id="@+id/editTextId"
+                android:inputType="text"
+                android:autofillHints="name"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="Código del Piso" />
+
             <Button
                 android:id="@+id/buttonJoinHome"
                 android:layout_marginTop="8dp"
@@ -267,9 +112,7 @@
                 android:layout_height="48dp"
                 android:text="Unirse a un Piso"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/lightPurple" />
-
-
+                android:backgroundTint="@color/darkPurple" />
 
         </LinearLayout>
 

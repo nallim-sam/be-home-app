@@ -46,9 +46,14 @@
                 android:layout_weight="0"
                 android:background="@color/separationGrey" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <View
-                android:layout_marginTop="380dp"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="0"
@@ -59,16 +64,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/textViewID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="ID:" />
 
                 <TextView
-                    android:id="@+id/textViewDBText"
+                    android:id="@+id/idFromDB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Texto de la base de datos" />
@@ -80,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Crear Tarea"
+                android:text="TAREAS"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/darkPurple" />
 
