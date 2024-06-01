@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     private final List<Fragment> fragmentList = new ArrayList<>();
-    private final List<String> fragmentTitleList = new ArrayList<>();
+    private static final List<String> fragmentTitleList = new ArrayList<>();
 
     public ViewPagerAdapter(@NonNull Fragment fragment) {
         super(fragment);
@@ -29,5 +29,9 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentTitleList.add(title);
+    }
+
+    public static String getFragmentTitle(int position) {
+        return fragmentTitleList.get(position);
     }
 }

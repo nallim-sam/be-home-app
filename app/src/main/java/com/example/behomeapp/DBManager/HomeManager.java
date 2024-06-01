@@ -126,8 +126,8 @@ public class HomeManager {
         }
     }
 
-    protected List<PisoModelo> extractDataHome(String pisoId) {
-        List<PisoModelo> pisoModeloList = new ArrayList<>();
+    public List<String> extractDataHome(String pisoId) {
+        List<String> pisoModeloList = new ArrayList<>();
 
         try (Connection conn = ConnectionService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(RESUMEN_QUERY)) {
@@ -139,7 +139,7 @@ public class HomeManager {
             while (rs.next()) {
                 String tipo = rs.getString("tipo");
                 String nombre = rs.getString("nombre");
-                pisoModeloList.add(new PisoModelo(tipo, nombre));
+                pisoModeloList.add(String.valueOf(new PisoModelo(tipo, nombre)));
             }
         } catch (Exception e) {
             e.printStackTrace();

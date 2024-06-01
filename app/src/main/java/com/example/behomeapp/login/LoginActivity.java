@@ -54,8 +54,11 @@ public class LoginActivity extends AppCompatActivity {
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
-        if (!validarCampos(email, password)) {
-            return;
+        if (email.isEmpty() || !email.matches(emailPattern)) {
+            editTextEmail.setError("El campo email no es correcto.");
+        }
+        if (password.isEmpty()) {
+            editTextPassword.setError("La contraseña no puede estar vacía.");
         }
 
         new Thread(() -> {
@@ -70,15 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (resultSet.next()) {
                     runOnUiThread(() -> {
 
-                        try {
-                            final String name = resultSet.getString("nombre");
-
-                            SharedPreferencesUtils.saveUserData(LoginActivity.this, email, name);
-
-                        } catch (SQLException e) {
-                            throw new RuntimeException("Error al obtener el nombre del usuario al iniciar sesión.", e);
-                        }
-
+                        SharedPreferencesUtils.saveUserData(LoginActivity.this, email);
 
                         Toast.makeText(LoginActivity.this, "Iniciando sesión", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NavActivity.class);
@@ -100,16 +95,5 @@ public class LoginActivity extends AppCompatActivity {
         }).start();
     }
 
-    private boolean validarCampos(String email, String password) {
-        if (email.isEmpty() || !email.matches(emailPattern)) {
-            editTextEmail.setError("El campo email no es correcto.");
-            return false;
-        }
-        if (password.isEmpty()) {
-            editTextPassword.setError("La contraseña no puede estar vacía.");
-            return false;
-        }
-        return true;
-    }
 
 }

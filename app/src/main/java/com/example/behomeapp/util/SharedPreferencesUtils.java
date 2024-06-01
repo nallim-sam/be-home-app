@@ -5,19 +5,17 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.HashMap;
-
 public class SharedPreferencesUtils {
 
     private static final String PREF_NAME = "LoginPrefs";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_NAME = "nombre";
-    public static void saveUserData(Context context, String email, String name) {
+    public static void saveUserData(Context context, String email) {
 
         final SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME , MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_EMAIL, email);
-        editor.putString(KEY_NAME, name);
+       // editor.putString(KEY_NAME, name);
         //editor.commit();
         editor.apply();
 
