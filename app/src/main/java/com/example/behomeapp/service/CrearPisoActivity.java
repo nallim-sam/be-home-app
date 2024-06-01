@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.behomeapp.R;
-import com.example.behomeapp.inserter.PisoInserter;
+import com.example.behomeapp.DBManager.HomeManager;
 import com.example.behomeapp.model.PisoModelo;
 import com.example.behomeapp.ui.home.HomeFragment;
 
@@ -24,7 +24,7 @@ public class CrearPisoActivity extends AppCompatActivity {
 
     private EditText etName;
     private EditText etId;
-    private final PisoInserter pisoInserter = new PisoInserter();
+    private final HomeManager homeManager = new HomeManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,15 @@ public class CrearPisoActivity extends AppCompatActivity {
         final Button buttonJoinHome = findViewById(R.id.buttonJoinHome);
 
 
-        buttonCreateHome.setOnClickListener(v -> crearPiso());
+        buttonCreateHome.setOnClickListener(v -> {
+            Thread thread = new Thread(this::crearPiso);
+            thread.start();
+        });
 
-        buttonJoinHome.setOnClickListener(v -> unirsePiso());
+        buttonJoinHome.setOnClickListener(v -> {
+            Thread thread = new Thread(this::unirsePiso);
+            thread.start();
+        });
     }
 
     private void crearPiso() {
@@ -59,7 +65,7 @@ public class CrearPisoActivity extends AppCompatActivity {
 
         //final PisoInserter pisoInserter = new PisoInserter();
 
-        final boolean pisoInsertado = pisoInserter.insertarPiso(pisoModelo);
+        final boolean pisoInsertado = homeManager.insertarPiso(pisoModelo);
 
         if (pisoInsertado) {
             // Guardar id del piso en SharedPreferences
@@ -94,7 +100,7 @@ public class CrearPisoActivity extends AppCompatActivity {
             Toast.makeText(CrearPisoActivity.this, "Por favor, introduce el ID del piso", Toast.LENGTH_SHORT).show();
         }
 
-        if (pisoInserter.validarPisoEnBD(pisoId)) {
+        if (homeManager.validarPisoEnBD(pisoId)) {
             // Guardar id del piso en SharedPreferences
             SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
@@ -105,7 +111,7 @@ public class CrearPisoActivity extends AppCompatActivity {
             String emailUsuario = sharedPreferences.getString("email", "");
 
             // Actualizar el ID del piso para el usuario en la BBDD
-            pisoInserter.actualizarUsuarioConPisoId(etId.getText().toString().trim(), emailUsuario);
+            homeManager.actualizarUsuarioConPisoId(etId.getText().toString().trim(), emailUsuario);
 
             // Navegar al HomeFragment
             Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);

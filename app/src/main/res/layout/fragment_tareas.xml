@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.TareasFragment">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/backgrounGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Contenedor principal (LinearLayout) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="46dp"
+            tools:ignore="ExtraText">
+
+            <TextView
+                android:id="@+id/tvTareasDelDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tareas del día"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="16dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDia"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp" />
+
+            <View
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+            <TextView
+                android:id="@+id/tvTareasSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tareas de la semana"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="16dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSemana"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_below="@id/recyclerViewDia"
+                android:layout_marginTop="8dp" />
+
+            <View
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+            <TextView
+                android:id="@+id/tvTareasMes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tareas del mes"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMes"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:layout_below="@id/recyclerViewSemana"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonCrearTareas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/darkPurple"
+                android:padding="16dp"
+                android:layout_gravity="center"
+                android:text="Crear Tarea"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

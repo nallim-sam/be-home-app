@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.behomeapp.NavActivity;
 import com.example.behomeapp.R;
 import com.example.behomeapp.service.ConnectionService;
+import com.example.behomeapp.util.SharedPreferencesUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,12 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
-        if (email.isEmpty() || email.matches(emailPattern)) {
-            editTextEmail.setError("El campo email no es correcto.");
+        if (!validarCampos(email, password)) {
+            return;
         }
-        if (password.isEmpty()) {
-            editTextPassword.setError("La contraseña no puede estar vacia");
-        }
+
         new Thread(() -> {
             try {
                 Connection conn = ConnectionService.getConnection();
@@ -70,6 +69,17 @@ public class LoginActivity extends AppCompatActivity {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
                     runOnUiThread(() -> {
+
+                        try {
+                            final String name = resultSet.getString("nombre");
+
+                            SharedPreferencesUtils.saveUserData(LoginActivity.this, email, name);
+
+                        } catch (SQLException e) {
+                            throw new RuntimeException("Error al obtener el nombre del usuario al iniciar sesión.", e);
+                        }
+
+
                         Toast.makeText(LoginActivity.this, "Iniciando sesión", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NavActivity.class);
                         startActivity(intent);
@@ -89,4 +99,17 @@ public class LoginActivity extends AppCompatActivity {
 
         }).start();
     }
+
+    private boolean validarCampos(String email, String password) {
+        if (email.isEmpty() || !email.matches(emailPattern)) {
+            editTextEmail.setError("El campo email no es correcto.");
+            return false;
+        }
+        if (password.isEmpty()) {
+            editTextPassword.setError("La contraseña no puede estar vacía.");
+            return false;
+        }
+        return true;
+    }
+
 }

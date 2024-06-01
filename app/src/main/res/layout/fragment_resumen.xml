@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.EditarPisoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.ResumenFragment">
 
     <FrameLayout
         android:id="@+id/frame_layout"
@@ -18,57 +18,72 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UselessParent">
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <!-- Contenedor principal (LinearLayout) -->
+        <!-- Contenedor principal -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp"
+            android:layout_marginTop="46dp"
             tools:ignore="ExtraText">
 
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_marginTop="8dp"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resumen"
+                android:layout_width="match_parent"
+                android:layout_height="284dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <View
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0"
+                android:background="@color/separationGrey" />
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:text="Editar Piso" />
-
-            <View
+                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0"
-                android:background="@color/separationGrey" />
+                android:gravity="center">
 
-            <EditText
-                android:id="@+id/editTextName"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:hint="Nombre del Piso" />
+                <TextView
+                    android:id="@+id/textViewID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="ID:" />
 
+                <TextView
+                    android:id="@+id/idFromDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
 
-            <View
-                android:layout_marginTop="160dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0"
-                android:background="@color/separationGrey" />
-
+            </LinearLayout>
+            <!--
             <Button
                 android:id="@+id/buttonConfirmar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Confirmar cambios"
+                android:text="TAREAS"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/darkPurple" />
+
+            <Button
+                android:id="@+id/buttonEditarPiso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/darkGreen"
+                android:text="Editar Piso" />-->
 
         </LinearLayout>
 

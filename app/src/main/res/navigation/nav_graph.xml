@@ -7,25 +7,23 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.behome.ui.home.HomeFragment"
+        android:name="com.example.behomeapp.ui.home.HomeFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_piso"
-            app:destination="@id/navigation_piso" />
+        android:id="@+id/action_navigation_home_to_navigation_editar_piso"
+        app:destination="@id/navigation_editar_piso" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_piso"
-        android:name="com.example.behome.ui.home.HomeFragment"
-        android:label="Inicio"
-        tools:layout="@layout/fragment_editar_piso" >
-
-    </fragment>
+        android:id="@+id/navigation_editar_piso"
+        android:name="com.example.behomeapp.ui.home.EditarPisoFragment"
+        android:label="Editar Piso"
+        tools:layout="@layout/fragment_editar_piso" />
 
     <fragment
         android:id="@+id/navigation_calendar"
-        android:name="com.example.behome.ui.calendar.CalendarFragment"
+        android:name="com.example.behomeapp.ui.calendar.CalendarFragment"
         android:label="Calendario"
         tools:layout="@layout/fragment_calendar" />
 
@@ -36,7 +34,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.behome.ui.profile.ProfileFragment"
+        android:name="com.example.behomeapp.ui.profile.ProfileFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
 </navigation>

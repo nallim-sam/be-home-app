@@ -18,10 +18,6 @@
             android:name=".service.TareasActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeFragment"
-            android:label="HomeFragment">
-        </activity>
-        <activity
             android:name=".NavActivity"
             android:exported="false" />
         <activity
