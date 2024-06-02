@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.behomeapp.CrearTareaFragment;
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.DBManager.TareaManager;
 import com.example.behomeapp.R;
@@ -57,7 +56,7 @@ public class TareasFragment extends Fragment {
 
         new Thread(() -> {
 
-            final String pisoId = DataBaseManager.obtenerId(email);
+            final String pisoId = DataBaseManager.obtenerPisoId(email);
 
             if (pisoId == null || pisoId.isEmpty()) {
                 log.info("El ID del piso está vacío.");
@@ -78,8 +77,6 @@ public class TareasFragment extends Fragment {
 
                 adapterMes = new TareasAdapter(getContext(), tareasMesList);
                 recyclerViewMes.setAdapter(adapterMes);
-
-
 
             });
 

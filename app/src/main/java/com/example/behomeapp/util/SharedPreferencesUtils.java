@@ -9,7 +9,6 @@ public class SharedPreferencesUtils {
 
     private static final String PREF_NAME = "LoginPrefs";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_NAME = "nombre";
 
 
     public static void saveUserData(Context context, String email) {

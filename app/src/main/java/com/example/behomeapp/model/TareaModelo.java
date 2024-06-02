@@ -2,15 +2,14 @@ package com.example.behomeapp.model;
 
 import com.example.behomeapp.enums.FrecuenciaEnum;
 
-import java.util.Date;
 
 public class TareaModelo {
     private String id;
     private String nombre;
-    private UsuarioModelo usuario;
-    private PisoModelo piso;
+    private String idUsuario;
+    private String idPiso;
     private boolean completado;
-    private Date fechaLimite;
+    private String fechaLimite;
     private FrecuenciaEnum frecuencia;
 
     public TareaModelo() {
@@ -37,13 +36,6 @@ public class TareaModelo {
         this.nombre = nombre;
     }
 
-    public UsuarioModelo getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioModelo usuario) {
-        this.usuario = usuario;
-    }
 
     public boolean isCompletado() {
         return completado;
@@ -53,20 +45,12 @@ public class TareaModelo {
         this.completado = completado;
     }
 
-    public Date getFechaLimite() {
+    public String getFechaLimite() {
         return fechaLimite;
     }
 
-    public void setFechaLimite(Date fechaLimite) {
+    public void setFechaLimite(String fechaLimite) {
         this.fechaLimite = fechaLimite;
-    }
-
-    public PisoModelo getPiso() {
-        return piso;
-    }
-
-    public void setPiso(PisoModelo piso) {
-        this.piso = piso;
     }
 
     public FrecuenciaEnum getFrecuencia() {
@@ -75,5 +59,21 @@ public class TareaModelo {
 
     public void setFrecuencia(FrecuenciaEnum frecuencia) {
         this.frecuencia = frecuencia;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getIdPiso() {
+        return idPiso;
+    }
+
+    public void setIdPiso(String idPiso) {
+        this.idPiso = idPiso;
     }
 }

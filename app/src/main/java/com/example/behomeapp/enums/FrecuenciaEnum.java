@@ -1,10 +1,11 @@
 package com.example.behomeapp.enums;
 
 public enum FrecuenciaEnum {
-    DIARIO,
-    SEMANAL,
-    MENSUAL;
+    DIARIO("Diario"),
+    SEMANAL("Semanal"),
+    MENSUAL("Mensual"),
+    NINGUNA("Ninguna");
 
-    private FrecuenciaEnum() {
+    private FrecuenciaEnum(String nombre) {
     }
 }

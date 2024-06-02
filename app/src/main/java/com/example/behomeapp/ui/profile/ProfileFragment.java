@@ -1,13 +1,13 @@
 package com.example.behomeapp.ui.profile;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.behomeapp.DBManager.UserManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.login.LoginActivity;
+import com.example.behomeapp.util.SharedPreferencesUtils;
 
 public class ProfileFragment extends Fragment {
 
@@ -27,10 +28,9 @@ public class ProfileFragment extends Fragment {
 
         final Button btnLogout = view.findViewById(R.id.buttonLogout);
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("app_prefs", getContext().MODE_PRIVATE);
-        String email = prefs.getString("email", null);
         new Thread(() -> {
-            String username = UserManager.obtenerNombre(email);
+            final String email = SharedPreferencesUtils.getEmail(requireContext());
+            final String username = UserManager.obtenerNombre(email);
 
             // Actualizar la interfaz de usuario en el hilo principal
             requireActivity().runOnUiThread(() -> {
@@ -41,6 +41,8 @@ public class ProfileFragment extends Fragment {
 
         btnLogout.setOnClickListener( v -> {
             Intent intent = new Intent(requireContext(), LoginActivity.class);
+            Toast.makeText(getContext(), "Cerrando Sesión", Toast.LENGTH_SHORT).show();
+            SharedPreferencesUtils.clearCredentials(requireContext());
             startActivity(intent);
         });
 

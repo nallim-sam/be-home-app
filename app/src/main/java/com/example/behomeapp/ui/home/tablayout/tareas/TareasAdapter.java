@@ -16,8 +16,8 @@ import com.example.behomeapp.model.TareaModelo;
 import java.util.List;
 
 public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.ViewHolder> {
-private List<TareaModelo> tareasList;
-private Context context;
+private final List<TareaModelo> tareasList;
+private final Context context;
 
 public TareasAdapter(Context context, List<TareaModelo> tareasList) {
         this.context = context;
@@ -43,7 +43,7 @@ public int getItemCount() {
         return tareasList.size();
         }
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public static class ViewHolder extends RecyclerView.ViewHolder {
     TextView nombreTarea;
     CheckBox checkBox;
 

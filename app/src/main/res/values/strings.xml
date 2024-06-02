@@ -9,4 +9,11 @@
     <string name="resumen">Resumen</string>
     <string name="estancias">ESTANCIAS</string>
     <string name="crea_tu_piso">Crea tu piso</string>
+
+    <string-array name="frecuencia_array">
+        <item>Diaria</item>
+        <item>Semanal</item>
+        <item>Mensual</item>
+        <item>Ninguna</item>
+    </string-array>
 </resources>

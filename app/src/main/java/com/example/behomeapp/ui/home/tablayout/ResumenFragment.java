@@ -51,7 +51,7 @@ public class ResumenFragment extends Fragment {
 
         new Thread(() -> {
 
-            final String pisoId = DataBaseManager.obtenerId(email);
+            final String pisoId = DataBaseManager.obtenerPisoId(email);
             if (pisoId == null || pisoId.isEmpty()) {
                 log.info("El ID del piso está vacío.");
                 runOnUiThreadSafe(() -> idTextView.setText(ERROR_TEXT));

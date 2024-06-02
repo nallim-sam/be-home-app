@@ -43,17 +43,6 @@ public class DataBaseManager {
             "LIMIT 3";
 
 
-    // Variables para la creacion de tareas automaticas
-    private static final String INSERTAR_TAREA_QUERY = "INSERT INTO Tarea " + //
-            "(nombre, " + //
-            "id_usuario_asignado, " +//
-            "id_piso_asignado, " +//
-            "fecha_limite, " +//
-            "frecuencia, " +//
-            "completado) " +//
-            "VALUES (?, ?, ?, ?, ?, ?)";
-    private static final int LIMITE_SEMANAS = 52; // Un año
-
     public boolean insertarPiso(PisoModelo pisoModelo) {
 
         try (final Connection connection = ConnectionService.getConnection()) {
@@ -97,7 +86,7 @@ public class DataBaseManager {
         }
     }
 
-    public static String obtenerId(String email) {
+    public static String obtenerPisoId(String email) {
 
         try (final Connection connection = ConnectionService.getConnection() ;
              final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_ID_QUERY)) {
@@ -153,47 +142,7 @@ public class DataBaseManager {
         return datosPiso;
     }
 
-    // Método para crear tareas semanales
-    public static void crearTareasSemanales(Date fechaInicio, TareaModelo tareaModelo, Connection connection) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaInicio);
 
-        // Establecer la fecha límite inicial para la tarea base
-        Date fechaLimite = tareaModelo.getFechaLimite();
 
-        try {
-            // Consulta SQL para insertar una nueva tarea
 
-            // Preparar la consulta
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERTAR_TAREA_QUERY);
-
-            for (int i = 0; i < LIMITE_SEMANAS; i++) {
-                // Avanzar una semana
-                calendar.add(Calendar.WEEK_OF_YEAR, 1);
-
-                // Verificar si se ha alcanzado el límite temporal
-                if (calendar.get(Calendar.YEAR) > calendar.getActualMaximum(Calendar.YEAR)) {
-                    break; // Detener la creación de tareas adicionales
-                }
-
-                // Establecer la nueva fecha límite para la tarea
-                preparedStatement.setString(1, tareaModelo.getNombre());
-                preparedStatement.setInt(2, tareaModelo.getUsuario().getId());
-                preparedStatement.setString(3, tareaModelo.getPiso().getId());
-                preparedStatement.setDate(4, new java.sql.Date(calendar.getTimeInMillis()));
-                preparedStatement.setString(5, tareaModelo.getFrecuencia().toString());
-                preparedStatement.setBoolean(6, tareaModelo.isCompletado());
-
-                // Ejecutar la consulta para insertar la nueva tarea
-                preparedStatement.executeUpdate();
-            }
-
-            // Cerrar el PreparedStatement
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Manejar el error
-        }
-    }
 }

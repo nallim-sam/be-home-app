@@ -13,6 +13,9 @@
         <action
         android:id="@+id/action_navigation_home_to_navigation_editar_piso"
         app:destination="@id/navigation_editar_piso" />
+        <action
+            android:id="@+id/action_navigation_home_to_resumenFragment"
+            app:destination="@id/resumenFragment" />
     </fragment>
 
     <fragment
@@ -37,4 +40,27 @@
         android:name="com.example.behomeapp.ui.profile.ProfileFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/resumenFragment"
+        android:name="com.example.behomeapp.ui.home.tablayout.ResumenFragment"
+        android:label="fragment_resumen"
+        tools:layout="@layout/fragment_resumen" >
+        <action
+            android:id="@+id/action_resumenFragment_to_tareasFragment"
+            app:destination="@id/tareasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tareasFragment"
+        android:name="com.example.behomeapp.ui.home.tablayout.tareas.TareasFragment"
+        android:label="fragment_tareas"
+        tools:layout="@layout/fragment_tareas" >
+        <action
+            android:id="@+id/action_tareasFragment_to_crearTareaFragment"
+            app:destination="@id/crearTareaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearTareaFragment"
+        android:name="com.example.behomeapp.ui.home.tablayout.tareas.CrearTareaFragment"
+        android:label="fragment_crear_tarea"
+        tools:layout="@layout/fragment_crear_tarea" />
 </navigation>
