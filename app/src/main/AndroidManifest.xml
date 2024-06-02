@@ -15,9 +15,6 @@
         android:theme="@style/Theme.BeHomeApp"
         tools:targetApi="31">
         <activity
-            android:name=".service.TareasActivity"
-            android:exported="false" />
-        <activity
             android:name=".NavActivity"
             android:exported="false" />
         <activity

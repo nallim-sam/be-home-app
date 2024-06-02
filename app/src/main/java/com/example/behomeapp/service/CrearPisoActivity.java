@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.behomeapp.R;
-import com.example.behomeapp.DBManager.HomeManager;
+import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.model.PisoModelo;
 import com.example.behomeapp.ui.home.HomeFragment;
 
@@ -24,7 +24,7 @@ public class CrearPisoActivity extends AppCompatActivity {
 
     private EditText etName;
     private EditText etId;
-    private final HomeManager homeManager = new HomeManager();
+    private final DataBaseManager dataBaseManager = new DataBaseManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class CrearPisoActivity extends AppCompatActivity {
 
         //final PisoInserter pisoInserter = new PisoInserter();
 
-        final boolean pisoInsertado = homeManager.insertarPiso(pisoModelo);
+        final boolean pisoInsertado = dataBaseManager.insertarPiso(pisoModelo);
 
         if (pisoInsertado) {
             // Guardar id del piso en SharedPreferences
@@ -100,7 +100,7 @@ public class CrearPisoActivity extends AppCompatActivity {
             Toast.makeText(CrearPisoActivity.this, "Por favor, introduce el ID del piso", Toast.LENGTH_SHORT).show();
         }
 
-        if (homeManager.validarPisoEnBD(pisoId)) {
+        if (dataBaseManager.validarPisoEnBD(pisoId)) {
             // Guardar id del piso en SharedPreferences
             SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
@@ -111,7 +111,7 @@ public class CrearPisoActivity extends AppCompatActivity {
             String emailUsuario = sharedPreferences.getString("email", "");
 
             // Actualizar el ID del piso para el usuario en la BBDD
-            homeManager.actualizarUsuarioConPisoId(etId.getText().toString().trim(), emailUsuario);
+            dataBaseManager.actualizarUsuarioConPisoId(etId.getText().toString().trim(), emailUsuario);
 
             // Navegar al HomeFragment
             Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);

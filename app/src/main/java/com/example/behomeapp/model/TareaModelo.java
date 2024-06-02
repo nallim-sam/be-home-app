@@ -1,6 +1,6 @@
 package com.example.behomeapp.model;
 
-import com.example.behomeapp.enums.EstanciaEnum;
+import com.example.behomeapp.enums.FrecuenciaEnum;
 
 import java.util.Date;
 
@@ -8,11 +8,17 @@ public class TareaModelo {
     private String id;
     private String nombre;
     private UsuarioModelo usuario;
-    private EstanciaEnum estancia;
+    private PisoModelo piso;
     private boolean completado;
     private Date fechaLimite;
+    private FrecuenciaEnum frecuencia;
 
     public TareaModelo() {
+    }
+
+    public TareaModelo(String nombre, boolean completado) {
+        this.nombre = nombre;
+        this.completado = completado;
     }
 
     public String getId() {
@@ -39,14 +45,6 @@ public class TareaModelo {
         this.usuario = usuario;
     }
 
-    public EstanciaEnum getEstancia() {
-        return estancia;
-    }
-
-    public void setEstancia(EstanciaEnum estancia) {
-        this.estancia = estancia;
-    }
-
     public boolean isCompletado() {
         return completado;
     }
@@ -61,5 +59,21 @@ public class TareaModelo {
 
     public void setFechaLimite(Date fechaLimite) {
         this.fechaLimite = fechaLimite;
+    }
+
+    public PisoModelo getPiso() {
+        return piso;
+    }
+
+    public void setPiso(PisoModelo piso) {
+        this.piso = piso;
+    }
+
+    public FrecuenciaEnum getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(FrecuenciaEnum frecuencia) {
+        this.frecuencia = frecuencia;
     }
 }

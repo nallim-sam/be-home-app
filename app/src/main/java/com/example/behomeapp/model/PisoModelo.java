@@ -1,9 +1,5 @@
 package com.example.behomeapp.model;
 
-import com.example.behomeapp.enums.EstanciaEnum;
-
-import java.util.List;
-
 public class PisoModelo {
 
     private String id;

@@ -1,4 +1,4 @@
-package com.example.behomeapp.ui.home;
+package com.example.behomeapp.ui.home.tablayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

@@ -1,7 +1,6 @@
 package com.example.behomeapp.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.behomeapp.R;
 import com.example.behomeapp.service.ConnectionService;
 import com.example.behomeapp.service.CrearPisoActivity;
+import com.example.behomeapp.util.SharedPreferencesUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -102,10 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                 mainHandler.post(() -> {
                     if (filasInsertadas > 0) {
 
-                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email", txtEmail);
-                        editor.apply();
+                        SharedPreferencesUtils.saveUserData(SignUpActivity.this, txtEmail);
 
                         Toast.makeText(SignUpActivity.this, "Registrándose", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);
