@@ -1,78 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgrounGrey"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.calendar.CrearEventoFragment">
 
-    <!-- Contenedor principal -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:ignore="ExtraText">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crear Evento"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:paddingBottom="16dp" />
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/backgrounGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Nombre" />
 
-        <EditText
-            android:id="@+id/editTextNombre"
+        <!-- Contenedor principal -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Nombre del Evento" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Fecha" />
-
-        <EditText
-            android:id="@+id/editTextFecha"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="dd/mm/yyyy" />
-
-
-        <Button
-            android:id="@+id/buttonCrearEvento"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/darkPurple"
-            android:text="Crear Evento"
-            android:textSize="16dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:backgroundTint="@color/backgrounGrey"
             android:padding="16dp"
-            android:textColor="@android:color/white" />
+            tools:ignore="ExtraText">
 
-        <Button
-            android:id="@+id/buttonVolver"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/darkGreen"
-            android:padding="16dp"
-            android:text="Volver"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crear Evento"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Nombre" />
+
+            <EditText
+                android:id="@+id/editTextNombreLista"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Nombre del Evento" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Fecha" />
+
+            <EditText
+                android:id="@+id/editTextFecha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="dd/mm/yyyy" />
 
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/buttonCrearEvento"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/darkPurple"
+                android:text="Crear Evento"
+                android:textSize="16dp"
+                android:padding="16dp"
+                android:textColor="@android:color/white" />
 
-</FrameLayout>
+            <Button
+                android:id="@+id/buttonVolver"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/darkGreen"
+                android:padding="16dp"
+                android:text="Volver"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

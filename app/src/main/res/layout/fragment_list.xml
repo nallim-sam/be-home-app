@@ -26,11 +26,11 @@
                     android:id="@+id/listViewListas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="8dp"
                     android:layout_weight="1"
                     android:dividerHeight="8dp"
                     android:divider="@color/backgrounGrey" />
-
-
 
         </LinearLayout>
 
@@ -39,7 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="60dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="100dp"
+            android:contentDescription="boton para añadir una lista"
             android:src="@drawable/icon_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

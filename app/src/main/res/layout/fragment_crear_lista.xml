@@ -30,13 +30,13 @@
             android:text="Nombre" />
 
         <EditText
-            android:id="@+id/editTextNombre"
+            android:id="@+id/editTextNombreLista"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Nombre de la lista" />
 
         <Button
-            android:id="@+id/buttonCrearTarea"
+            android:id="@+id/buttonCrearLista"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

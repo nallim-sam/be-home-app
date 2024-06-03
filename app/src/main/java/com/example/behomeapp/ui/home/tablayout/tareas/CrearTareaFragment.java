@@ -40,7 +40,7 @@ public class CrearTareaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crear_tarea, container, false);
 
-        editTextNombre = view.findViewById(R.id.editTextNombre);
+        editTextNombre = view.findViewById(R.id.editTextNombreLista);
         editTextFecha = view.findViewById(R.id.editTextFecha);
         spinnerFrecuencia = view.findViewById(R.id.spinnerFrecuencia);
         final Button buttonCrearTarea = view.findViewById(R.id.buttonCrearTarea);
@@ -86,7 +86,7 @@ public class CrearTareaFragment extends Fragment {
 
         if (nombre.isEmpty() || fecha.isEmpty() || frecuenciaString.isEmpty()) {
             // Mostrar mensaje de error si algún campo está vacío
-            log.info("Todos los campos son obligatorios.");
+            log.info("No se ha podido crear la tarea porque algun campo esta vacio.");
             return;
         }
 

@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgrounGrey"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.list.CrearProductoFragment"
     android:id="@+id/crear_producto">
 
-    <!-- Contenedor principal -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:ignore="ExtraText">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir Producto"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:paddingBottom="16dp" />
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Nombre" />
-
-        <EditText
-            android:id="@+id/editTextNombre"
+        <!-- Contenedor principal -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Nombre del Producto" />
-
-        <Button
-            android:id="@+id/buttonCrearTarea"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/darkPurple"
-            android:text="Añadir Producto"
-            android:textSize="16dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/backgrounGrey"
             android:padding="16dp"
-            android:textColor="@android:color/white" />
+            tools:ignore="ExtraText">
 
-        <Button
-            android:id="@+id/buttonVolver"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/darkGreen"
-            android:padding="16dp"
-            android:text="Volver"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text="Añadir Producto"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Nombre" />
+
+            <EditText
+                android:id="@+id/editTextNombreProducto"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Nombre del Producto" />
+
+            <Button
+                android:id="@+id/buttonAddProducto"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/darkPurple"
+                android:padding="16dp"
+                android:text="Añadir Producto"
+                android:textColor="@android:color/white"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/buttonVolver"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/darkGreen"
+                android:padding="16dp"
+                android:text="Volver"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

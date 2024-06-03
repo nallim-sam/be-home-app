@@ -34,7 +34,9 @@ public class CrearEventoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_crear_evento, container, false);
 
-        editTextNombre = view.findViewById(R.id.editTextNombre);
+        setHasOptionsMenu(true);
+
+        editTextNombre = view.findViewById(R.id.editTextNombreLista);
         editTextFecha = view.findViewById(R.id.editTextFecha);
 
         final Button buttonCrearEvento = view.findViewById(R.id.buttonCrearEvento);

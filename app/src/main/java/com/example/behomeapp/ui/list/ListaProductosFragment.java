@@ -1,63 +1,80 @@
 package com.example.behomeapp.ui.list;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.behomeapp.DBManager.ListaManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.model.ProductoModelo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListaProductosFragment extends Fragment {
 
     private int idLista;
+    private String nombreLista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_lista_productos, container, false);
 
+        TextView textViewNombreLista = view.findViewById(R.id.text_lista_nombre);
         ListView listViewProductos = view.findViewById(R.id.listViewProductos);
         FloatingActionButton fabAddProduct = view.findViewById(R.id.fabAddProduct);
 
+        new Thread(() -> {
+            // Obtener el id de la lista de la compra seleccionada
+            Bundle args = getArguments();
+            if (args != null) {
+                idLista = args.getInt("id_lista");
+                nombreLista = args.getString("nombre");
+            }
 
-        // Obtener el id de la lista de la compra seleccionada
-        Bundle args = getArguments();
-        if (args != null) {
-            idLista = args.getInt("id_lista");
-        }
+            // Cargar los productos de la lista desde la base de datos
+            final List<ProductoModelo> listaProductos = ListaManager.obtenerProductosLista(idLista);
 
-        // Configurar el adapter
-        List<ProductoModelo> productos = new ArrayList<>();
-        ProductosAdapter adapter = new ProductosAdapter(getActivity(), productos);
-        listViewProductos.setAdapter(adapter);
+            runOnUiThreadSafe(() -> {
+                textViewNombreLista.setText(nombreLista);
+                ProductosAdapter productosAdapter = new ProductosAdapter(getContext(), listaProductos);
+                listViewProductos.setAdapter(productosAdapter);
+            });
 
-        // Cargar los productos de la lista desde la base de datos
-        ListaManager.obtenerProductosLista(idLista);
+        }).start();
 
-        // Configurar el click listener para el FAB
-        fabAddProduct.setOnClickListener(v ->  {
+        fabAddProduct.setOnClickListener(v -> {
 
-            CrearProductoFragment crearProductoFragment = new CrearProductoFragment();
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id_lista", idLista);
 
-            transaction.replace(R.id.lista_productos, crearProductoFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-
+            NavController navController = Navigation.findNavController(view);
+            navController.navigate(R.id.action_lista_productos_to_crearProductoFragment);
         });
 
         return view;
+    }
+
+    /**
+     * Método auxiliar para ejecutar en el hilo principal de forma segura
+     *
+     * @param action objeto de la interfaz funcional Runnable
+     */
+    private void runOnUiThreadSafe(Runnable action) {
+        Activity activity = getActivity();
+        if (activity != null) {
+            activity.runOnUiThread(action);
+        }
     }
 }

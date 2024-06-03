@@ -10,13 +10,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ListaManager {
 
-
+    private static final Logger log = Logger.getLogger(ListaManager.class.getName());
     private static final String OBTENER_LISTAS_QUERY = "SELECT * " +
             "FROM listacompra " +
             "WHERE id_piso = ?";
+    private static final String OBTENER_PRODUCTOS_QUERY = "SELECT p.id, p.nombre " +
+            "FROM Producto p " +
+            "JOIN listacompra_producto lcp " +
+            "ON p.id = lcp.id_producto " +
+            "WHERE lcp.id_lista = ?";
+    private static final String INSERTAR_LISTA_QUERY = "INSERT INTO ListaCompra (nombre, id_piso) " +
+            "VALUES (?, ?)";
+    private static final String INSERTAR_PRODUCTO_QUERY = "INSERT INTO Producto (nombre) " +
+            "VALUES (?)";
+    private static final String INSERTAR_LISTA_PRODUCTO_QUERY = "INSERT INTO ListaCompra_Producto (id_lista, id_producto) " +
+            "VALUES (?, ?)";
 
     public static List<ListaCompraModelo> obtenerListasCompras(String pisoId) {
 
@@ -42,15 +54,79 @@ public class ListaManager {
     public static List<ProductoModelo> obtenerProductosLista(int idLista) {
         final List<ProductoModelo> productoModeloList = new ArrayList<>();
 
+        try (final Connection connection = ConnectionService.getConnection();
+             final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_PRODUCTOS_QUERY)) {
+            preparedStatement.setInt(1, idLista);
+            try (final ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    ProductoModelo productoModelo = new ProductoModelo();
+                    productoModelo.setId(rs.getInt("id"));
+                    productoModelo.setNombre(rs.getString("nombre"));
+
+                    productoModeloList.add(productoModelo);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return productoModeloList;
     }
 
-    public static void insertarLista() {
+    public static void insertarLista(String nombre, String idPiso) {
+        try (final Connection connection = ConnectionService.getConnection() ;
+             final PreparedStatement preparedStatement = connection.prepareStatement(INSERTAR_LISTA_QUERY)) {
+
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, idPiso);
+
+            int lineasInsertadas = preparedStatement.executeUpdate();
+
+            if (lineasInsertadas > 0) {
+                log.info("Se ha insertado la lista de la compra en la BBDD correctamente");
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
-    public static void insertarProducto() {
+    public static void insertarProducto(String nombre, int idLista) {
 
+        try (final Connection connection = ConnectionService.getConnection() ;
+             final PreparedStatement preparedStatementProducto = connection.prepareStatement(INSERTAR_PRODUCTO_QUERY) ;
+             final PreparedStatement preparedStatementRelacion = connection.prepareStatement(INSERTAR_LISTA_PRODUCTO_QUERY)) {
+
+            preparedStatementProducto.setString(1, nombre);
+            int filasInsertadas = preparedStatementProducto.executeUpdate();
+
+            if (filasInsertadas > 0) {
+                // Obtener el ID del producto insertado
+                ResultSet generatedKeys = preparedStatementProducto.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int idProducto = generatedKeys.getInt(1);
+
+                    preparedStatementRelacion.setInt(1, idLista);
+                    preparedStatementRelacion.setInt(2, idProducto);
+
+                    int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
+
+                    if (rowsAffectedRelacion > 0) {
+                        System.out.println("Producto agregado y asociado a la lista de compra exitosamente.");
+                    } else {
+                        System.out.println("Error al asociar el producto a la lista de compra.");
+                    }
+                }
+            } else {
+                System.out.println("Error al agregar el producto.");
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

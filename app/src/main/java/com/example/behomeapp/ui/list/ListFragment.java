@@ -55,7 +55,8 @@ public class ListFragment extends Fragment {
                 listViewCompras.setOnItemClickListener((parent, view1, position, id) -> {
                     ListaCompraModelo selectedLista = listaComprasList.get(position);
                     Bundle bundle = new Bundle();
-                    bundle.putInt("listaId", selectedLista.getId());  // Asegúrate de tener un método getId() en ListaCompraModelo
+                    bundle.putInt("listaId", selectedLista.getId());
+                    bundle.putString("nombre",selectedLista.getNombre());// Asegúrate de tener un método getId() en ListaCompraModelo
 
                     NavController navController = Navigation.findNavController(view);
                     navController.navigate(R.id.action_navigation_list_to_lista_productos, bundle);

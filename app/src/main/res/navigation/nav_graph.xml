@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/navigation_list"
         android:name="com.example.behomeapp.ui.list.ListFragment"
-        android:label="List"
+        android:label="Listas"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_navigation_list_to_crearListaFragment"
@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/resumenFragment"
         android:name="com.example.behomeapp.ui.home.tablayout.ResumenFragment"
-        android:label="fragment_resumen"
+        android:label="Resumen"
         tools:layout="@layout/fragment_resumen" >
         <action
             android:id="@+id/action_resumenFragment_to_tareasFragment"
@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/tareasFragment"
         android:name="com.example.behomeapp.ui.home.tablayout.tareas.TareasFragment"
-        android:label="fragment_tareas"
+        android:label="Tareas"
         tools:layout="@layout/fragment_tareas" >
         <action
             android:id="@+id/action_tareasFragment_to_crearTareaFragment"
@@ -74,28 +74,28 @@
     <fragment
         android:id="@+id/crearTareaFragment"
         android:name="com.example.behomeapp.ui.home.tablayout.tareas.CrearTareaFragment"
-        android:label="fragment_crear_tarea"
+        android:label="Crear tarea"
         tools:layout="@layout/fragment_crear_tarea" />
     <fragment
         android:id="@+id/crearEventoFragment"
         android:name="com.example.behomeapp.ui.calendar.CrearEventoFragment"
-        android:label="fragment_crear_evento"
+        android:label="Crear Evento"
         tools:layout="@layout/fragment_crear_evento" />
     <fragment
         android:id="@+id/crearListaFragment"
         android:name="com.example.behomeapp.ui.list.CrearListaFragment"
-        android:label="fragment_crear_lista"
+        android:label="Crear Lista"
         tools:layout="@layout/fragment_crear_lista" />
     <fragment
         android:id="@+id/crearProductoFragment"
         android:name="com.example.behomeapp.ui.list.CrearProductoFragment"
-        android:label="fragment_crear_producto"
+        android:label="Añadir Producto"
         tools:layout="@layout/fragment_crear_producto" />
 
     <fragment
         android:id="@+id/lista_productos"
         android:name="com.example.behomeapp.ui.list.ListaProductosFragment"
-        android:label="fragment_lista_productos"
+        android:label="Productos"
         tools:layout="@layout/fragment_lista_productos">
         <action
             android:id="@+id/action_lista_productos_to_crearProductoFragment"
@@ -107,6 +107,6 @@
     <fragment
         android:id="@+id/productosFragment"
         android:name="com.example.behomeapp.ui.list.ProductosFragment"
-        android:label="fragment_productos"
+        android:label="Productos"
         tools:layout="@layout/fragment_productos" />
 </navigation>
