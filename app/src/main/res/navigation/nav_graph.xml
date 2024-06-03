@@ -28,12 +28,24 @@
         android:id="@+id/navigation_calendar"
         android:name="com.example.behomeapp.ui.calendar.CalendarFragment"
         android:label="Calendario"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_navigation_calendar_to_crearEventoFragment"
+            app:destination="@id/crearEventoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_list"
+        android:name="com.example.behomeapp.ui.list.ListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_navigation_list_to_crearListaFragment"
+            app:destination="@id/crearListaFragment" />
+        <action
+            android:id="@+id/action_navigation_list_to_lista_productos"
+            app:destination="@id/lista_productos" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -58,9 +70,43 @@
             android:id="@+id/action_tareasFragment_to_crearTareaFragment"
             app:destination="@id/crearTareaFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/crearTareaFragment"
         android:name="com.example.behomeapp.ui.home.tablayout.tareas.CrearTareaFragment"
         android:label="fragment_crear_tarea"
         tools:layout="@layout/fragment_crear_tarea" />
+    <fragment
+        android:id="@+id/crearEventoFragment"
+        android:name="com.example.behomeapp.ui.calendar.CrearEventoFragment"
+        android:label="fragment_crear_evento"
+        tools:layout="@layout/fragment_crear_evento" />
+    <fragment
+        android:id="@+id/crearListaFragment"
+        android:name="com.example.behomeapp.ui.list.CrearListaFragment"
+        android:label="fragment_crear_lista"
+        tools:layout="@layout/fragment_crear_lista" />
+    <fragment
+        android:id="@+id/crearProductoFragment"
+        android:name="com.example.behomeapp.ui.list.CrearProductoFragment"
+        android:label="fragment_crear_producto"
+        tools:layout="@layout/fragment_crear_producto" />
+
+    <fragment
+        android:id="@+id/lista_productos"
+        android:name="com.example.behomeapp.ui.list.ListaProductosFragment"
+        android:label="fragment_lista_productos"
+        tools:layout="@layout/fragment_lista_productos">
+        <action
+            android:id="@+id/action_lista_productos_to_crearProductoFragment"
+            app:destination="@id/crearProductoFragment" />
+        <action
+            android:id="@+id/action_lista_productos_to_productosFragment"
+            app:destination="@id/productosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="com.example.behomeapp.ui.list.ProductosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" />
 </navigation>

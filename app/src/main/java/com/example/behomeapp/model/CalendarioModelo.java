@@ -3,8 +3,7 @@ package com.example.behomeapp.model;
 public class CalendarioModelo {
 
     private int id;
-    private PisoModelo piso;
-    private EventoModelo evento;
+    private String pisoId;
 
     public CalendarioModelo() {
     }
@@ -17,19 +16,11 @@ public class CalendarioModelo {
         this.id = id;
     }
 
-    public PisoModelo getPiso() {
-        return piso;
+    public String getPisoId() {
+        return pisoId;
     }
 
-    public void setPiso(PisoModelo piso) {
-        this.piso = piso;
-    }
-
-    public EventoModelo getEvento() {
-        return evento;
-    }
-
-    public void setEvento(EventoModelo evento) {
-        this.evento = evento;
+    public void setPisoId(String pisoId) {
+        this.pisoId = pisoId;
     }
 }

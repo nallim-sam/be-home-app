@@ -29,26 +29,54 @@
             android:padding="16dp"
             tools:ignore="ExtraText">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="64dp"
-                android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Nombre usuario: "/>
 
             <TextView
                 android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="Nombre Usuario"
                 android:layout_gravity="center"/>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
+
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:dividerInsetStart="16dp"
+            app:dividerInsetEnd="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:dividerInsetStart="16dp"
-                app:dividerInsetEnd="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Email: "/>
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -59,23 +87,26 @@
                 android:ems="10"
                 android:layout_gravity="center"/>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dividerInsetStart="16dp"
-                app:dividerInsetEnd="16dp"/>
+        </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="240dp"
-                android:backgroundTint="@color/darkPurple"
-                android:text="Cerrar Sesion"
-                android:textColor="@color/icon"
-                android:textSize="16sp"
-                app:cornerRadius="10dp"
-                android:layout_gravity="center"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:dividerInsetStart="16dp"
+            app:dividerInsetEnd="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/darkPurple"
+            android:text="Cerrar Sesion"
+            android:textColor="@color/icon"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            android:layout_gravity="center"/>
 
 
         </LinearLayout>

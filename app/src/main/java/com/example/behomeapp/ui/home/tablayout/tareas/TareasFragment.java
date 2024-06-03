@@ -1,12 +1,12 @@
 package com.example.behomeapp.ui.home.tablayout.tareas;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,8 +83,11 @@ public class TareasFragment extends Fragment {
         }).start();
 
         buttonCrearTareas.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), CrearTareaFragment.class);
-            startActivity(intent);
+            CrearTareaFragment crearTareaFragment = new CrearTareaFragment();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, crearTareaFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
 
         return view;

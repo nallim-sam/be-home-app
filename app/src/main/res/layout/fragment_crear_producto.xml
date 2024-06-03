@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgrounGrey"
-    tools:context=".ui.home.tablayout.tareas.CrearTareaFragment">
-
+    android:id="@+id/crear_producto">
 
     <!-- Contenedor principal -->
     <LinearLayout
@@ -16,14 +15,14 @@
         tools:ignore="ExtraText">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crear Tarea"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:paddingBottom="16dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir Producto"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,30 +33,7 @@
             android:id="@+id/editTextNombre"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Nombre de la tarea" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Fecha" />
-
-        <EditText
-            android:id="@+id/editTextFecha"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="dd/mm/yyyy" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Frecuencia" />
-
-        <Spinner
-            android:id="@+id/spinnerFrecuencia"
-            android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:hint="Nombre del Producto" />
 
         <Button
             android:id="@+id/buttonCrearTarea"
@@ -66,7 +42,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/darkPurple"
-            android:text="Crear Tarea"
+            android:text="Añadir Producto"
             android:textSize="16dp"
             android:padding="16dp"
             android:textColor="@android:color/white" />

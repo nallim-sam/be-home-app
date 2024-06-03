@@ -5,10 +5,9 @@ import java.util.Date;
 public class EventoModelo {
 
     private int id;
+    private  int idCalendario;
     private String nombre;
-    private Date fecha;
-    private String horaEmpiece;
-    private String horaFin;
+    private String fecha;
 
     public EventoModelo() {
     }
@@ -29,27 +28,19 @@ public class EventoModelo {
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public String getHoraEmpiece() {
-        return horaEmpiece;
+    public int getIdCalendario() {
+        return idCalendario;
     }
 
-    public void setHoraEmpiece(String horaEmpiece) {
-        this.horaEmpiece = horaEmpiece;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(String horaFin) {
-        this.horaFin = horaFin;
+    public void setIdCalendario(int idCalendario) {
+        this.idCalendario = idCalendario;
     }
 }

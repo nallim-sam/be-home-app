@@ -43,7 +43,8 @@ public class CrearTareaFragment extends Fragment {
         editTextNombre = view.findViewById(R.id.editTextNombre);
         editTextFecha = view.findViewById(R.id.editTextFecha);
         spinnerFrecuencia = view.findViewById(R.id.spinnerFrecuencia);
-        Button buttonCrearTarea = view.findViewById(R.id.buttonCrearTarea);
+        final Button buttonCrearTarea = view.findViewById(R.id.buttonCrearTarea);
+        final Button buttonVolver = view.findViewById(R.id.buttonVolver);
 
         // Configurar el Spinner de frecuencia
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
@@ -55,7 +56,11 @@ public class CrearTareaFragment extends Fragment {
         editTextFecha.setOnClickListener(v -> showDatePickerDialog());
 
         // Configurar el botón de crear tarea
-        buttonCrearTarea.setOnClickListener(v -> crearTarea());
+        buttonCrearTarea.setOnClickListener(v -> {
+            new Thread(this::crearTarea).start();
+        });
+
+        buttonVolver.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         return view;
     }

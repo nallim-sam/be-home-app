@@ -4,13 +4,11 @@ public class ProductoModelo {
 
     private String id;
     private String nombre;
-    private double precio;
     private boolean comprado;
 
-    public ProductoModelo(String id, String nombre, double precio) {
+    public ProductoModelo(String id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.precio = precio;
         this.comprado = false; // Por defecto, el producto no está comprado
     }
 
@@ -21,9 +19,6 @@ public class ProductoModelo {
         return nombre;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
 
     public boolean estaComprado() {
         return comprado;
