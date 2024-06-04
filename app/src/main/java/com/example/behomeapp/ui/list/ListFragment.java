@@ -45,6 +45,7 @@ public class ListFragment extends Fragment {
             final String pisoId = DataBaseManager.obtenerPisoId(email);
             if (pisoId == null || pisoId.isEmpty()) {
                 log.info("El ID del piso está vacío.");
+                return;
             }
             final List<ListaCompraModelo> listaComprasList = ListaManager.obtenerListasCompras(pisoId);
 
@@ -53,13 +54,18 @@ public class ListFragment extends Fragment {
                 listViewCompras.setAdapter(adapter);
 
                 listViewCompras.setOnItemClickListener((parent, view1, position, id) -> {
-                    ListaCompraModelo selectedLista = listaComprasList.get(position);
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("listaId", selectedLista.getId());
-                    bundle.putString("nombre",selectedLista.getNombre());// Asegúrate de tener un método getId() en ListaCompraModelo
 
-                    NavController navController = Navigation.findNavController(view);
-                    navController.navigate(R.id.action_navigation_list_to_lista_productos, bundle);
+                    ListaCompraModelo selectedLista = listaComprasList.get(position);
+
+                    new Thread(() -> runOnUiThreadSafe(() -> {
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nombreLista", selectedLista.getNombre());
+                        bundle.putString("pisoId", pisoId);
+
+                        NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.action_navigation_list_to_lista_productos, bundle);
+                    })).start();
                 });
 
             });

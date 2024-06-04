@@ -50,7 +50,10 @@ public class CrearProductoFragment extends Fragment {
             int idLista = args.getInt("id_lista");
             ListaManager.insertarProducto(nombreProducto,idLista);
         }
-        log.info("No se ha podido insertar un producto en la lista porque no se ha encontrado el identificador.");
+        else {
+            log.info("No se ha podido insertar un producto en la lista porque no se ha encontrado el identificador.");
+        }
+
 
     }
 }

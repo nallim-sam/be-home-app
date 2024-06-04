@@ -13,9 +13,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="16" />
-                            <option name="y" value="75" />
+                            <option name="x" value="32" />
+                            <option name="y" value="74" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_crearEventoFragment_to_navigation_calendar">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -37,8 +46,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="606" />
-                            <option name="y" value="-648" />
+                            <option name="x" value="594" />
+                            <option name="y" value="-487" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -103,8 +112,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="376" />
+                            <option name="x" value="17" />
+                            <option name="y" value="405" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -169,18 +178,6 @@
                           <Point>
                             <option name="x" value="-320" />
                             <option name="y" value="-660" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="productosFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="616" />
-                            <option name="y" value="-305" />
                           </Point>
                         </option>
                       </LayoutPositions>

@@ -1,7 +1,5 @@
 package com.example.behomeapp.model;
 
-import java.util.Date;
-
 public class EventoModelo {
 
     private int id;

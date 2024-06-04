@@ -18,6 +18,12 @@ public class ListaManager {
     private static final String OBTENER_LISTAS_QUERY = "SELECT * " +
             "FROM listacompra " +
             "WHERE id_piso = ?";
+
+    private static final String OBTENER_ID_QUERY = "SELECT * " +
+            "FROM listacompra " +
+            "WHERE id_piso = ? " +
+            "AND nombre = ?";
+
     private static final String OBTENER_PRODUCTOS_QUERY = "SELECT p.id, p.nombre " +
             "FROM Producto p " +
             "JOIN listacompra_producto lcp " +
@@ -51,8 +57,30 @@ public class ListaManager {
         return listaComprasList;
     }
 
-    public static List<ProductoModelo> obtenerProductosLista(int idLista) {
+    public static int obtenerIdLista(String idPiso, String nombreLista) {
+
+        try (final Connection connection = ConnectionService.getConnection();
+             final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_ID_QUERY)) {
+
+            preparedStatement.setString(1, idPiso);
+            preparedStatement.setString(2, nombreLista);
+
+            try (final ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
+                }
+                throw new RuntimeException("No se encontró ninguna list de la compra con los parámetros especificados.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al ejecutar la consulta SQL.", e);
+        }
+    }
+
+    public static List<ProductoModelo> obtenerProductosLista(String idPiso, String nombreLista) {
+
         final List<ProductoModelo> productoModeloList = new ArrayList<>();
+
+        final int idLista = obtenerIdLista(idPiso, nombreLista);
 
         try (final Connection connection = ConnectionService.getConnection();
              final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_PRODUCTOS_QUERY)) {
@@ -74,7 +102,7 @@ public class ListaManager {
     }
 
     public static void insertarLista(String nombre, String idPiso) {
-        try (final Connection connection = ConnectionService.getConnection() ;
+        try (final Connection connection = ConnectionService.getConnection();
              final PreparedStatement preparedStatement = connection.prepareStatement(INSERTAR_LISTA_QUERY)) {
 
             preparedStatement.setString(1, nombre);
@@ -95,8 +123,8 @@ public class ListaManager {
 
     public static void insertarProducto(String nombre, int idLista) {
 
-        try (final Connection connection = ConnectionService.getConnection() ;
-             final PreparedStatement preparedStatementProducto = connection.prepareStatement(INSERTAR_PRODUCTO_QUERY) ;
+        try (final Connection connection = ConnectionService.getConnection();
+             final PreparedStatement preparedStatementProducto = connection.prepareStatement(INSERTAR_PRODUCTO_QUERY);
              final PreparedStatement preparedStatementRelacion = connection.prepareStatement(INSERTAR_LISTA_PRODUCTO_QUERY)) {
 
             preparedStatementProducto.setString(1, nombre);

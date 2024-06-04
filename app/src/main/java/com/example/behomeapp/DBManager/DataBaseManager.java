@@ -1,7 +1,6 @@
 package com.example.behomeapp.DBManager;
 
 import com.example.behomeapp.model.PisoModelo;
-import com.example.behomeapp.model.TareaModelo;
 import com.example.behomeapp.service.ConnectionService;
 
 import java.sql.Connection;
@@ -9,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class DataBaseManager {

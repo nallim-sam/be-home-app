@@ -23,8 +23,8 @@ import java.util.List;
 
 public class ListaProductosFragment extends Fragment {
 
-    private int idLista;
     private String nombreLista;
+    private String pisoId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,12 +39,12 @@ public class ListaProductosFragment extends Fragment {
             // Obtener el id de la lista de la compra seleccionada
             Bundle args = getArguments();
             if (args != null) {
-                idLista = args.getInt("id_lista");
-                nombreLista = args.getString("nombre");
+                nombreLista = args.getString("nombreLista");
+                pisoId = args.getString("pisoId");
             }
 
             // Cargar los productos de la lista desde la base de datos
-            final List<ProductoModelo> listaProductos = ListaManager.obtenerProductosLista(idLista);
+            final List<ProductoModelo> listaProductos = ListaManager.obtenerProductosLista(pisoId, nombreLista);
 
             runOnUiThreadSafe(() -> {
                 textViewNombreLista.setText(nombreLista);
@@ -56,15 +56,13 @@ public class ListaProductosFragment extends Fragment {
 
         fabAddProduct.setOnClickListener(v -> {
 
-            Bundle bundle = new Bundle();
-            bundle.putInt("id_lista", idLista);
-
             NavController navController = Navigation.findNavController(view);
             navController.navigate(R.id.action_lista_productos_to_crearProductoFragment);
         });
 
         return view;
     }
+
 
     /**
      * Método auxiliar para ejecutar en el hilo principal de forma segura

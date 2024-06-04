@@ -80,7 +80,11 @@
         android:id="@+id/crearEventoFragment"
         android:name="com.example.behomeapp.ui.calendar.CrearEventoFragment"
         android:label="Crear Evento"
-        tools:layout="@layout/fragment_crear_evento" />
+        tools:layout="@layout/fragment_crear_evento" >
+        <action
+            android:id="@+id/action_crearEventoFragment_to_navigation_calendar"
+            app:destination="@id/navigation_calendar" />
+    </fragment>
     <fragment
         android:id="@+id/crearListaFragment"
         android:name="com.example.behomeapp.ui.list.CrearListaFragment"
@@ -101,12 +105,7 @@
             android:id="@+id/action_lista_productos_to_crearProductoFragment"
             app:destination="@id/crearProductoFragment" />
         <action
-            android:id="@+id/action_lista_productos_to_productosFragment"
-            app:destination="@id/productosFragment" />
+            android:id="@+id/action_lista_productos_to_navigation_list"
+            app:destination="@id/navigation_list" />
     </fragment>
-    <fragment
-        android:id="@+id/productosFragment"
-        android:name="com.example.behomeapp.ui.list.ProductosFragment"
-        android:label="Productos"
-        tools:layout="@layout/fragment_productos" />
 </navigation>
