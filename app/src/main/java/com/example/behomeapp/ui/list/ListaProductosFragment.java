@@ -24,7 +24,7 @@ import java.util.List;
 public class ListaProductosFragment extends Fragment {
 
     private String nombreLista;
-    private String pisoId;
+    private int listaId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,15 +36,15 @@ public class ListaProductosFragment extends Fragment {
         FloatingActionButton fabAddProduct = view.findViewById(R.id.fabAddProduct);
 
         new Thread(() -> {
+
             // Obtener el id de la lista de la compra seleccionada
             Bundle args = getArguments();
             if (args != null) {
-                nombreLista = args.getString("nombreLista");
-                pisoId = args.getString("pisoId");
+                nombreLista = args.getString("nombre_lista");
+                listaId =  args.getInt("id_lista");
             }
-
             // Cargar los productos de la lista desde la base de datos
-            final List<ProductoModelo> listaProductos = ListaManager.obtenerProductosLista(pisoId, nombreLista);
+            final List<ProductoModelo> listaProductos = ListaManager.obtenerProductosLista(listaId);
 
             runOnUiThreadSafe(() -> {
                 textViewNombreLista.setText(nombreLista);
@@ -56,8 +56,11 @@ public class ListaProductosFragment extends Fragment {
 
         fabAddProduct.setOnClickListener(v -> {
 
+            Bundle bundle = new Bundle();
+            bundle.putInt("id_lista", listaId);
+
             NavController navController = Navigation.findNavController(view);
-            navController.navigate(R.id.action_lista_productos_to_crearProductoFragment);
+            navController.navigate(R.id.action_lista_productos_to_crearProductoFragment, bundle);
         });
 
         return view;

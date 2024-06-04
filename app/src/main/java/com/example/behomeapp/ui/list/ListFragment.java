@@ -57,15 +57,22 @@ public class ListFragment extends Fragment {
 
                     ListaCompraModelo selectedLista = listaComprasList.get(position);
 
-                    new Thread(() -> runOnUiThreadSafe(() -> {
+                    new Thread(() -> {
+                        // Aquí agregamos la lógica para obtener el ID de la lista
+                        int idLista = ListaManager.obtenerIdLista(pisoId, selectedLista.getNombre());
+                        selectedLista.setId(idLista);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putString("nombreLista", selectedLista.getNombre());
-                        bundle.putString("pisoId", pisoId);
+                        runOnUiThreadSafe( () -> {
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("id_lista", idLista);
+                            bundle.putString("nombre_lista", selectedLista.getNombre());
 
-                        NavController navController = Navigation.findNavController(view);
-                        navController.navigate(R.id.action_navigation_list_to_lista_productos, bundle);
-                    })).start();
+                            NavController navController = Navigation.findNavController(view);
+                            navController.navigate(R.id.action_navigation_list_to_lista_productos, bundle);
+                        });
+
+                    }).start();
+
                 });
 
             });
@@ -75,7 +82,6 @@ public class ListFragment extends Fragment {
         fabAddList.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(view);
             navController.navigate(R.id.action_navigation_list_to_crearListaFragment);
-
         });
 
         return view;

@@ -69,22 +69,22 @@ public class ListaManager {
                 if (rs.next()) {
                     return rs.getInt("id");
                 }
-                throw new RuntimeException("No se encontró ninguna list de la compra con los parámetros especificados.");
+                log.info(String.format("No se encontró ninguna lista de la compra '%s'en el piso: %s.", nombreLista, idPiso));
+                return 0;
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error al ejecutar la consulta SQL.", e);
         }
     }
 
-    public static List<ProductoModelo> obtenerProductosLista(String idPiso, String nombreLista) {
+    public static List<ProductoModelo> obtenerProductosLista(int listaId) {
 
         final List<ProductoModelo> productoModeloList = new ArrayList<>();
 
-        final int idLista = obtenerIdLista(idPiso, nombreLista);
 
         try (final Connection connection = ConnectionService.getConnection();
              final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_PRODUCTOS_QUERY)) {
-            preparedStatement.setInt(1, idLista);
+            preparedStatement.setInt(1, listaId);
             try (final ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
                     ProductoModelo productoModelo = new ProductoModelo();
