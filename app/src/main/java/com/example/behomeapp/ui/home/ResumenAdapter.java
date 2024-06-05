@@ -10,15 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.behomeapp.R;
+import com.example.behomeapp.model.DataItem;
 
 import java.util.List;
 
-public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+/**
+ * Adaptador para proporcionar datos a un RecyclerView
+ */
+public class ResumenAdapter extends RecyclerView.Adapter<ResumenAdapter.ViewHolder>{
 
-    private List<String> data;
-    private LayoutInflater inflater;
+    private final List<DataItem> data;
+    private final LayoutInflater inflater;
 
-    public RecyclerViewAdapter(Context context, List<String> data) {
+    public ResumenAdapter(Context context, List<DataItem> data) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
     }
@@ -26,13 +30,14 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_view, parent, false);
+        View view = inflater.inflate(R.layout.item_resumen, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ResumenAdapter.ViewHolder holder, int position) {
+        DataItem currentItem = data.get(position);
+        holder.textView.setText(currentItem.getNombre());
     }
 
     @Override
@@ -45,7 +50,7 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.textView);
+            textView = itemView.findViewById(R.id.textViewResumen);
         }
     }
 }

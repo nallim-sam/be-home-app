@@ -1,5 +1,6 @@
 package com.example.behomeapp.DBManager;
 
+import com.example.behomeapp.model.DataItem;
 import com.example.behomeapp.model.PisoModelo;
 import com.example.behomeapp.service.ConnectionService;
 
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DataBaseManager {
@@ -128,14 +130,11 @@ public class DataBaseManager {
     }
 
 
-    public List<String> extractDataHome(String pisoId) {
-        final List<String> datosPiso = new ArrayList<>();
+    public static List<DataItem> extractDataHome(String pisoId) {
+        final List<DataItem> datosPiso = new ArrayList<>();
 
         try (final Connection connection = ConnectionService.getConnection()) {
-            final List<String> tareas = new ArrayList<>();
-            final List<String> eventos = new ArrayList<>();
-
-            try (final PreparedStatement preparedStatementTareas = connection.prepareStatement(TAREAS_QUERY) ;
+            try (final PreparedStatement preparedStatementTareas = connection.prepareStatement(TAREAS_QUERY);
                  final PreparedStatement preparedStatementEventos = connection.prepareStatement(EVENTO_QUERY)) {
 
                 preparedStatementTareas.setString(1, pisoId);
@@ -143,14 +142,16 @@ public class DataBaseManager {
 
                 try (final ResultSet resultSet = preparedStatementTareas.executeQuery()) {
                     while (resultSet.next()) {
-                        String nombreTareas = resultSet.getString("nombre");
-                        tareas.add(nombreTareas);
+                        String nombreTarea = resultSet.getString("nombre");
+                        Date fechaTarea = resultSet.getDate("fecha_limite");
+                        datosPiso.add(new DataItem(nombreTarea, fechaTarea));
                     }
                 }
                 try (final ResultSet resultSetEventos = preparedStatementEventos.executeQuery()) {
                     while (resultSetEventos.next()) {
                         String nombreEvento = resultSetEventos.getString("nombre");
-                        eventos.add(nombreEvento);
+                        Date fechaEvento = resultSetEventos.getDate("fecha");
+                        datosPiso.add(new DataItem(nombreEvento, fechaEvento));
                     }
                 }
 
@@ -158,14 +159,9 @@ public class DataBaseManager {
                 throw new RuntimeException(e);
             }
 
-            datosPiso.addAll(tareas);
-            datosPiso.addAll(eventos);
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
         return datosPiso;
     }

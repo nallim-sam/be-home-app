@@ -12,11 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.R;
-import com.example.behomeapp.ui.home.RecyclerViewAdapter;
+import com.example.behomeapp.model.DataItem;
+import com.example.behomeapp.ui.home.ResumenAdapter;
 import com.example.behomeapp.util.SharedPreferencesUtils;
 
 import java.util.logging.Logger;
@@ -28,18 +28,19 @@ public class ResumenFragment extends Fragment {
 
     private static final Logger log = Logger.getLogger(ResumenFragment.class.getName());
     private static final String ERROR_TEXT = "ID del piso no disponible";
+    private static final String NO_DATA_TEXT = "No hay datos disponibles";
 
-    private RecyclerViewAdapter adapter;
-    private List<String> data;
+    private ResumenAdapter adapter;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_resumen, container, false);
 
-        final DataBaseManager dataBaseManager = new DataBaseManager();
         final TextView idTextView = view.findViewById(R.id.idFromDB);
         final RecyclerView recyclerView = view.findViewById(R.id.resumen);
+        final TextView mensajeTextView = view.findViewById(R.id.mensajeTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Obtener idPiso de SharedPreferences
@@ -61,19 +62,24 @@ public class ResumenFragment extends Fragment {
             // Actualizar la UI en el hilo principal
             runOnUiThreadSafe(() -> idTextView.setText(pisoId));
 
-            data = dataBaseManager.extractDataHome(pisoId);
+            final List<DataItem> data = DataBaseManager.extractDataHome(pisoId);
 
             if (data == null) {
                 log.info("No se encontraron datos para el ID del piso proporcionado.");
-                runOnUiThreadSafe(() -> Toast.makeText(getContext(), "No hay datos disponibles", Toast.LENGTH_SHORT).show());
+                requireActivity().runOnUiThread(() -> {
+                    mensajeTextView.setText(NO_DATA_TEXT);
+                    mensajeTextView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                });
                 return;
             }
-            // Actualizar la UI en el hilo principal
-            runOnUiThreadSafe(() -> {
-                adapter = new RecyclerViewAdapter(getContext(), data);
-                recyclerView.setAdapter(adapter);
-            });
 
+            requireActivity().runOnUiThread(() -> {
+                adapter = new ResumenAdapter(getContext(), data);
+                recyclerView.setAdapter(adapter);
+                mensajeTextView.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+            });
         }).start();
 
         return view;

@@ -7,6 +7,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Adaptador para gestionar varios fragments en una actividad
+ */
 public class ViewPagerAdapter extends FragmentStateAdapter {
     private final List<Fragment> fragmentList = new ArrayList<>();
     private static final List<String> fragmentTitleList = new ArrayList<>();
