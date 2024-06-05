@@ -128,8 +128,7 @@ public class ListaManager {
 
     }
 
-    public static int insertarProducto(String nombre, int idLista) {
-
+    public static ProductoModelo insertarProducto(String nombre, int idLista) {
         try (final Connection connection = ConnectionService.getConnection();
              final PreparedStatement preparedStatementProducto = connection.prepareStatement(INSERTAR_PRODUCTO_QUERY);
              final PreparedStatement preparedStatementRelacion = connection.prepareStatement(INSERTAR_LISTA_PRODUCTO_QUERY)) {
@@ -139,32 +138,38 @@ public class ListaManager {
 
             if (filasInsertadas > 0) {
                 // Obtener el ID del producto insertado
-                ResultSet generatedKeys = preparedStatementProducto.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    int idProducto = generatedKeys.getInt(1);
+                try (ResultSet generatedKeys = preparedStatementProducto.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int idProducto = generatedKeys.getInt(1);
 
-                    preparedStatementRelacion.setInt(1, idLista);
-                    preparedStatementRelacion.setInt(2, idProducto);
+                        preparedStatementRelacion.setInt(1, idLista);
+                        preparedStatementRelacion.setInt(2, idProducto);
 
-                    int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
+                        int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
 
-                    if (rowsAffectedRelacion > 0) {
-                        System.out.println("Producto agregado y asociado a la lista de compra exitosamente.");
-                        return  idProducto;
+                        if (rowsAffectedRelacion > 0) {
+                            final ProductoModelo productoModelo = new ProductoModelo();
+                            productoModelo.setId(idProducto);
+                            productoModelo.setNombre(nombre);
+                            System.out.println("Producto agregado y asociado a la lista de compra exitosamente.");
+                            return productoModelo;
+                        } else {
+                            System.out.println("Error al asociar el producto a la lista de compra.");
+                        }
                     } else {
-                        System.out.println("Error al asociar el producto a la lista de compra.");
+                        System.out.println("No se pudo obtener el ID del producto insertado.");
                     }
                 }
             } else {
                 System.out.println("Error al agregar el producto.");
             }
-
-
         } catch (SQLException e) {
+            System.out.println("Error al insertar el producto: " + e.getMessage());
             throw new RuntimeException(e);
         }
-        return 0;
+        return null;
     }
+
 
     public static void eliminarProducto(int productoId) {
 

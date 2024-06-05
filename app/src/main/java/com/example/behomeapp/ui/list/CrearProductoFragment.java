@@ -12,14 +12,17 @@ import android.widget.EditText;
 
 import com.example.behomeapp.DBManager.ListaManager;
 import com.example.behomeapp.R;
+import com.example.behomeapp.model.ProductoModelo;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class CrearProductoFragment extends Fragment {
 
     private static final Logger log = Logger.getLogger(CrearProductoFragment.class.getName());
     private EditText editTextNombreProducto;
-    private int idProducto;
+    private List<ProductoModelo> listaProductos;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,25 +40,42 @@ public class CrearProductoFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Crea un producto y lo añade a una lista
+     */
     private void crearProducto() {
-
         String nombreProducto = editTextNombreProducto.getText().toString().trim();
-
         if (nombreProducto.isEmpty()) {
             log.info("No se ha podido crear la lista porque el nombre está vacío.");
             return;
         }
-
         Bundle args = getArguments();
         if (args != null) {
             int idLista = args.getInt("id_lista");
-            idProducto = ListaManager.insertarProducto(nombreProducto, idLista);
+            ProductoModelo nuevoProducto = ListaManager.insertarProducto(nombreProducto, idLista);
 
-            getParentFragmentManager().popBackStack();
+            if (nuevoProducto != null) {
+                // Añadir el nuevo producto a la lista local de productos
+                if (listaProductos != null) {
+                    listaProductos.add(nuevoProducto);
+                } else {
+                    log.warning("La lista de productos no está inicializada.");
+                }
+            }
         } else {
             log.info("No se ha podido insertar un producto en la lista porque no se ha encontrado el identificador.");
         }
-
-
     }
+
+
+    /**
+     * Inicializa la lista de productos
+     *
+     * @param listaProductos lista del modelo Producto
+     */
+    public void setListaProductos(List<ProductoModelo> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+
 }

@@ -9,9 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Crear Tareas Correctamente">
+    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Cambiar color cuando una tarea esta completada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/model/ListaCompraModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/model/ListaCompraModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/service/ConnectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/service/ConnectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -331,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717605333067</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Cambiar color cuando una tarea esta completada">
+      <created>1717605636008</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1717605636008</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,6 +384,7 @@
     <MESSAGE value="Crear Evento" />
     <MESSAGE value="Mensaje Predeterminado para cuando no hay tarea" />
     <MESSAGE value="Crear Tareas Correctamente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crear Tareas Correctamente" />
+    <MESSAGE value="Cambiar color cuando una tarea esta completada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambiar color cuando una tarea esta completada" />
   </component>
 </project>

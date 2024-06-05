@@ -1,9 +1,12 @@
 package com.example.behomeapp.model;
 
+import java.util.List;
+
 public class ListaCompraModelo {
 
     private int id;
     private String nombre;
+    private List<ProductoModelo> productoModeloList;
 
     public ListaCompraModelo() {
     }
@@ -22,6 +25,14 @@ public class ListaCompraModelo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<ProductoModelo> getProductoModeloList() {
+        return productoModeloList;
+    }
+
+    public void setProductoModeloList(List<ProductoModelo> productoModeloList) {
+        this.productoModeloList = productoModeloList;
     }
 
 

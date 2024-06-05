@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionService {
 
-    private static final String URL_XAMPP = "jdbc:mysql://10.0.2.2:3307/behome";
+    private static final String URL_XAMPP = "jdbc:mysql://10.0.2.2:3307/behome?useUnicode=true&characterEncoding=UTF-8";
     private static final String USER = "root";
     private static final String PASSWORD_XAMPP = "";
 
