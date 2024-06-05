@@ -15,11 +15,12 @@ import com.example.behomeapp.R;
 
 import java.util.logging.Logger;
 
-
 public class CrearProductoFragment extends Fragment {
 
     private static final Logger log = Logger.getLogger(CrearProductoFragment.class.getName());
     private EditText editTextNombreProducto;
+    private int idProducto;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,9 +49,10 @@ public class CrearProductoFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             int idLista = args.getInt("id_lista");
-            ListaManager.insertarProducto(nombreProducto,idLista);
-        }
-        else {
+            idProducto = ListaManager.insertarProducto(nombreProducto, idLista);
+
+            getParentFragmentManager().popBackStack();
+        } else {
             log.info("No se ha podido insertar un producto en la lista porque no se ha encontrado el identificador.");
         }
 

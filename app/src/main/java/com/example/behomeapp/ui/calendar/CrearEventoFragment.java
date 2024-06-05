@@ -19,7 +19,10 @@ import com.example.behomeapp.R;
 import com.example.behomeapp.model.EventoModelo;
 import com.example.behomeapp.util.SharedPreferencesUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class CrearEventoFragment extends Fragment {
@@ -74,21 +77,38 @@ public class CrearEventoFragment extends Fragment {
         String nombre = editTextNombre.getText().toString().trim();
         String fecha = editTextFecha.getText().toString().trim();
 
+        // Convertir la fecha de 'dd/MM/yyyy' a 'yyyy-MM-dd'
+        String fechaFormateada = convertirFecha(fecha);
+
         EventoModelo eventoModelo = new EventoModelo();
         eventoModelo.setNombre(nombre);
-        eventoModelo.setFecha(fecha);
+        eventoModelo.setFecha(fechaFormateada);
 
         final String email = SharedPreferencesUtils.getEmail(requireContext());
         final String pisoId = DataBaseManager.obtenerPisoId(email);
         final int calendarioId = CalendarManager.obtenerIdCalendario(pisoId);
         eventoModelo.setIdCalendario(calendarioId);
 
+        // OBTENER ID CALENDARIO
         CalendarManager.insertarEvento(eventoModelo);
 
         // Regresar al fragmento anterior o cerrar el fragmento actual
-        getActivity().getSupportFragmentManager().popBackStack();
+        //getActivity().getSupportFragmentManager().popBackStack();
+        requireActivity().runOnUiThread(() -> getActivity().getSupportFragmentManager().popBackStack());
 
 
+    }
+
+    private String convertirFecha(String fecha) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = inputFormat.parse(fecha);
+            return outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

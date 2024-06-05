@@ -26,7 +26,7 @@ public class DataBaseManager {
             "WHERE email = ?";
 
     private final static String TAREAS_QUERY = "SELECT * " +
-            "FROM tareas " +
+            "FROM tarea " +
             "WHERE id_piso = ? " +
             "ORDER BY fecha_limite DESC " +
             "LIMIT 3 ";
@@ -101,45 +101,48 @@ public class DataBaseManager {
         }
     }
 
-    private void extraerEventosResumen(Connection connection, String pisoId) {
-        try (final PreparedStatement preparedStatement = connection.prepareStatement(EVENTO_QUERY)) {
-            preparedStatement.setString(1, pisoId);
-            try (final ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-
-                }
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private List<String> extraerTareasResumen(Connection connection, String pisoId) {
-        final List<String> tareas = new ArrayList<>();
-        try (final PreparedStatement preparedStatement = connection.prepareStatement(TAREAS_QUERY)) {
-            preparedStatement.setString(1, pisoId);
-            try (final ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                   String nombreTareas = resultSet.getString("nombre");
-                   tareas.add(nombreTareas);
-                }
-                return tareas;
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public List<String> extractDataHome(String pisoId) {
-        List<String> datosPiso = new ArrayList<>();
+        final List<String> datosPiso = new ArrayList<>();
+
+        try (final Connection connection = ConnectionService.getConnection()) {
+            final List<String> tareas = new ArrayList<>();
+            final List<String> eventos = new ArrayList<>();
+
+            try (final PreparedStatement preparedStatementTareas = connection.prepareStatement(TAREAS_QUERY) ;
+                 final PreparedStatement preparedStatementEventos = connection.prepareStatement(EVENTO_QUERY)) {
+
+                preparedStatementTareas.setString(1, pisoId);
+                preparedStatementEventos.setString(1, pisoId);
+
+                try (final ResultSet resultSet = preparedStatementTareas.executeQuery()) {
+                    while (resultSet.next()) {
+                        String nombreTareas = resultSet.getString("nombre");
+                        tareas.add(nombreTareas);
+                    }
+                }
+                try (final ResultSet resultSetEventos = preparedStatementEventos.executeQuery()) {
+                    while (resultSetEventos.next()) {
+                        String nombreEvento = resultSetEventos.getString("nombre");
+                        eventos.add(nombreEvento);
+                    }
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            datosPiso.addAll(tareas);
+            datosPiso.addAll(eventos);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
         return datosPiso;
     }
-
-
 
 
 }

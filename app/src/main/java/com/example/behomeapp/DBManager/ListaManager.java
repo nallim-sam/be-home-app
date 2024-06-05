@@ -35,6 +35,13 @@ public class ListaManager {
             "VALUES (?)";
     private static final String INSERTAR_LISTA_PRODUCTO_QUERY = "INSERT INTO ListaCompra_Producto (id_lista, id_producto) " +
             "VALUES (?, ?)";
+    private static final String DELETE_PRODUCTO_QUERY = "DELETE FROM Producto WHERE id = ?";
+    private static final String DELETE_RELACION_QUERY = "DELETE FROM ListaCompra_Producto WHERE id_producto = ?";
+    private static final String OBTENER_ID_PRODUCTO_QUERY = "SELECT p.id AS id_producto " +
+            "FROM Producto p " +
+            "INNER JOIN ListaCompra_Producto lcp ON p.id = lcp.id_producto " +
+            "WHERE p.nombre = ? AND lcp.id_lista = ?";
+
 
     public static List<ListaCompraModelo> obtenerListasCompras(String pisoId) {
 
@@ -121,7 +128,7 @@ public class ListaManager {
 
     }
 
-    public static void insertarProducto(String nombre, int idLista) {
+    public static int insertarProducto(String nombre, int idLista) {
 
         try (final Connection connection = ConnectionService.getConnection();
              final PreparedStatement preparedStatementProducto = connection.prepareStatement(INSERTAR_PRODUCTO_QUERY);
@@ -143,6 +150,7 @@ public class ListaManager {
 
                     if (rowsAffectedRelacion > 0) {
                         System.out.println("Producto agregado y asociado a la lista de compra exitosamente.");
+                        return  idProducto;
                     } else {
                         System.out.println("Error al asociar el producto a la lista de compra.");
                     }
@@ -155,7 +163,57 @@ public class ListaManager {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return 0;
     }
 
+    public static void eliminarProducto(int productoId) {
+
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement preparedStatementProducto = connection.prepareStatement(DELETE_PRODUCTO_QUERY);
+             PreparedStatement preparedStatementRelacion = connection.prepareStatement(DELETE_RELACION_QUERY)) {
+
+            preparedStatementProducto.setInt(1, productoId);
+            int rowsAffectedProducto = preparedStatementProducto.executeUpdate();
+
+            preparedStatementRelacion.setInt(1, productoId);
+            int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
+
+            if (rowsAffectedProducto > 0) {
+                log.info("Producto eliminado exitosamente.");
+            } else {
+                log.warning("No se encontró ningún producto con el ID proporcionado.");
+            }
+
+            if (rowsAffectedRelacion > 0) {
+                log.info("Relación de lista-compra-producto eliminada exitosamente.");
+            }
+
+        } catch (SQLException e) {
+            log.severe("Error al eliminar el producto: " + e.getMessage());
+            throw new RuntimeException("Error al eliminar el producto.", e);
+        }
+
+    }
+
+    public static int obtenerIdProducto(String nombreProducto, int idLista) {
+        int idProducto = -1; // Valor predeterminado si no se encuentra ningún producto
+
+        try (final Connection connection = ConnectionService.getConnection();
+             final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_ID_PRODUCTO_QUERY)) {
+
+            preparedStatement.setString(1, nombreProducto);
+            preparedStatement.setInt(2, idLista);
+
+            try (final ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    idProducto = rs.getInt("id_producto");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return idProducto;
+    }
 
 }

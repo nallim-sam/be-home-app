@@ -9,12 +9,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Icono Volver Atras de ToolBar">
+    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Añadir Productos a la Lista">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/DataBaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/DataBaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListaProductosFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListaProductosFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CrearEventoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CrearEventoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ProductosAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ProductosAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_producto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_producto.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,23 +110,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "ScreenRecorder.SavePath": "C:\\Users\\saraa\\Documents",
-    "android-custom-viewC:/Users/saraa/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/saraa/AppData/Local/Android/Sdk/sources/android-34/android/widget/AdapterView.java_SELECTED": "AdapterView",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/saraa/Documents",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;C:\\Users\\saraa\\Documents&quot;,
+    &quot;android-custom-viewC:/Users/saraa/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/saraa/AppData/Local/Android/Sdk/sources/android-34/android/widget/AdapterView.java_SELECTED&quot;: &quot;AdapterView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/saraa/Documents&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\saraa\Documents\AndroidStudioWorkSpace\BeHomeApp\app\libs" />
@@ -305,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717527765337</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Añadir Productos a la Lista">
+      <created>1717530011021</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717530011021</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,6 +355,7 @@
     <MESSAGE value="Listas de la compra" />
     <MESSAGE value="Productos de la lista" />
     <MESSAGE value="Icono Volver Atras de ToolBar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Icono Volver Atras de ToolBar" />
+    <MESSAGE value="Añadir Productos a la Lista" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadir Productos a la Lista" />
   </component>
 </project>

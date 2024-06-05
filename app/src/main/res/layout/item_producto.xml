@@ -11,15 +11,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
+
+        <CheckBox
+            android:id="@+id/checkBoxProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/tvItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:text="Item Name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+            android:textAppearance="?android:textAppearanceMedium" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
