@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.behomeapp.R;
@@ -38,21 +39,18 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.ViewHolder
         holder.nombreTarea.setText(tarea.getNombre());
         holder.checkBox.setChecked(tarea.isCompletado());
 
-        if (tarea.isCompletado()) {
-            holder.itemView.setBackgroundColor(Color.GREEN);
-        } else {
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
+        int darkGreenColor = ContextCompat.getColor(holder.itemView.getContext(), R.color.darkGreen);
+
+        // Establecer color del texto basado en si la tarea está completada o no
+        int textColor = tarea.isCompletado() ? darkGreenColor : Color.BLACK;
+        holder.nombreTarea.setTextColor(textColor);
 
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             tarea.setCompletado(isChecked);
+            int newTextcolor = isChecked ? darkGreenColor : Color.BLACK;
+            holder.nombreTarea.setTextColor(newTextcolor);
             if (isChecked) {
-                holder.itemView.setBackgroundColor(Color.GREEN);
                 moveToEnd(position);
-
-            } else {
-                holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-                notifyDataSetChanged();
             }
         });
 

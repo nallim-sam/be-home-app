@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Mensaje Predeterminado para cuando no hay tarea">
+    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Crear Tareas Correctamente">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/TareaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/TareasManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/CrearTareaFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/CrearTareaFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717602523772</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Crear Tareas Correctamente">
+      <created>1717605333067</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717605333067</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,6 +373,7 @@
     <MESSAGE value="Añadir Productos a la Lista" />
     <MESSAGE value="Crear Evento" />
     <MESSAGE value="Mensaje Predeterminado para cuando no hay tarea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mensaje Predeterminado para cuando no hay tarea" />
+    <MESSAGE value="Crear Tareas Correctamente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crear Tareas Correctamente" />
   </component>
 </project>
