@@ -8,20 +8,6 @@
     tools:context=".ui.home.tablayout.tareas.TareasFragment"
     android:id="@+id/fragment_container">
 
-    <!-- <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:background="@color/backgrounGrey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"> -->
-
         <!-- Contenedor principal (LinearLayout) -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +24,16 @@
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:padding="16dp" />
+
+            <TextView
+                android:id="@+id/textViewNoTareasDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay tareas del día"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:textColor="@android:color/black" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewDia"
@@ -60,6 +56,15 @@
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:padding="16dp" />
+
+            <TextView
+                android:id="@+id/textViewNoTareasSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay tareas de la semana"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:textColor="@android:color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewSemana"
@@ -84,6 +89,16 @@
                 android:textSize="16sp"
                 android:padding="8dp" />
 
+            <TextView
+                android:id="@+id/textViewNoTareasMes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay tareas del mes"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:textColor="@android:color/black" />
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewMes"
                 android:layout_width="match_parent"
@@ -105,5 +120,4 @@
 
         </LinearLayout>
 
-    <!-- </FrameLayout> -->
 </FrameLayout>

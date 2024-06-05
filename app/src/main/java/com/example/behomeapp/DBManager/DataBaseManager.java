@@ -14,6 +14,9 @@ public class DataBaseManager {
 
     private static final String CREAR_PISO_QUERY = "INSERT INTO Piso (id, nombre) " +
             "VALUES (?, ?);";
+
+    private static final String CREAR_CALENDARIO_QUERY = "INSERT INTO calendario (id_piso) VALUES (?)";
+
     private static final String ACTUALIZAR_USUARIO_QUERY = "UPDATE Usuario " +
             "SET id_piso = ? " +
             "WHERE email = ?";
@@ -52,6 +55,29 @@ public class DataBaseManager {
                 return filasInsertadas > 0;
             }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int insertarCalendario(String pisoId) {
+        try (Connection connection = ConnectionService.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(CREAR_CALENDARIO_QUERY, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatement.setString(1, pisoId);
+            int filasInsertadas = preparedStatement.executeUpdate();
+
+            if (filasInsertadas > 0) {
+                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Error al crear el calendario, no se ha obtenido el ID.");
+                    }
+                }
+            } else {
+                return -1; // Indica que no se ha insertado ningún registro
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

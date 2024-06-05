@@ -24,6 +24,7 @@ public class CrearPisoActivity extends AppCompatActivity {
 
     private EditText etName;
     private EditText etId;
+
     private final DataBaseManager dataBaseManager = new DataBaseManager();
 
     @Override
@@ -68,16 +69,28 @@ public class CrearPisoActivity extends AppCompatActivity {
         final boolean pisoInsertado = dataBaseManager.insertarPiso(pisoModelo);
 
         if (pisoInsertado) {
-            // Guardar id del piso en SharedPreferences
-            SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("id_piso", id);
-            editor.apply();
 
-            // Navegar al HomeFragment
-            Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);
-            startActivity(intent);
-            finish();
+            // Crear el calendario asociado al piso
+            final int calendarioId = dataBaseManager.insertarCalendario(id);
+
+            if (calendarioId != -1) {
+                // Guardar id del piso y del calendario en SharedPreferences
+                SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("id_piso", id);
+                editor.putInt("id_calendario", calendarioId);
+                editor.apply();
+
+                // Navegar al HomeFragment
+                runOnUiThread(() -> {
+                    Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);
+                    startActivity(intent);
+                    finish();
+                });
+            }  else {
+                runOnUiThread(() -> Toast.makeText(this, "Error al crear el calendario", Toast.LENGTH_SHORT).show());
+            }
+
         } else {
             Toast.makeText(this, "Error al crear el piso", Toast.LENGTH_SHORT).show();
         }

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.DBManager.TareaManager;
@@ -43,6 +44,10 @@ public class TareasFragment extends Fragment {
         final RecyclerView recyclerViewMes = view.findViewById(R.id.recyclerViewMes);
         final Button buttonCrearTareas = view.findViewById(R.id.buttonCrearTareas);
 
+        final TextView textViewNoTareasDia = view.findViewById(R.id.textViewNoTareasDia);
+        final TextView textViewNoTareasSemana = view.findViewById(R.id.textViewNoTareasSemana);
+        final TextView textViewNoTareasMes = view.findViewById(R.id.textViewNoTareasMes);
+
         // Asignar LayoutManager a los RecyclerView
         recyclerViewDia.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewSemana.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -66,19 +71,36 @@ public class TareasFragment extends Fragment {
             final List<TareaModelo> tareasSemanaList = TareaManager.setupRecyclerViewSemana(pisoId);
             final List<TareaModelo> tareasMesList = TareaManager.setupRecyclerViewMes(pisoId);
 
-            // Actualizar la UI en el hilo principal
             runOnUiThreadSafe(() -> {
-
-                adapterDia = new TareasAdapter(getContext(), tareasDiaList);
-                recyclerViewDia.setAdapter(adapterDia);
-
-                adapterSemana = new TareasAdapter(getContext(), tareasSemanaList);
-                recyclerViewSemana.setAdapter(adapterSemana);
-
-                adapterMes = new TareasAdapter(getContext(), tareasMesList);
-                recyclerViewMes.setAdapter(adapterMes);
-
+                if (tareasDiaList.isEmpty()) {
+                    textViewNoTareasDia.setVisibility(View.VISIBLE);
+                    recyclerViewDia.setVisibility(View.GONE);
+                } else {
+                    textViewNoTareasDia.setVisibility(View.GONE);
+                    recyclerViewDia.setVisibility(View.VISIBLE);
+                    adapterDia = new TareasAdapter(getContext(), tareasDiaList);
+                    recyclerViewDia.setAdapter(adapterDia);
+                }
+                if (tareasSemanaList.isEmpty()) {
+                    textViewNoTareasSemana.setVisibility(View.VISIBLE);
+                    recyclerViewSemana.setVisibility(View.GONE);
+                } else {
+                    textViewNoTareasSemana.setVisibility(View.GONE);
+                    recyclerViewSemana.setVisibility(View.VISIBLE);
+                    adapterSemana = new TareasAdapter(getContext(), tareasSemanaList);
+                    recyclerViewSemana.setAdapter(adapterSemana);
+                }
+                if (tareasMesList.isEmpty()) {
+                    textViewNoTareasMes.setVisibility(View.VISIBLE);
+                    recyclerViewMes.setVisibility(View.GONE);
+                } else {
+                    textViewNoTareasMes.setVisibility(View.GONE);
+                    recyclerViewMes.setVisibility(View.VISIBLE);
+                    adapterMes = new TareasAdapter(getContext(), tareasMesList);
+                    recyclerViewMes.setAdapter(adapterMes);
+                }
             });
+
 
         }).start();
 
