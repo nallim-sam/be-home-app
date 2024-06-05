@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.behomeapp.DBManager.DataBaseManager;
-import com.example.behomeapp.DBManager.TareaManager;
+import com.example.behomeapp.DBManager.TareasManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.model.TareaModelo;
 import com.example.behomeapp.util.SharedPreferencesUtils;
@@ -67,9 +67,9 @@ public class TareasFragment extends Fragment {
                 log.info("El ID del piso está vacío.");
             }
 
-            final List<TareaModelo> tareasDiaList = TareaManager.setupRecyclerViewDia(pisoId);
-            final List<TareaModelo> tareasSemanaList = TareaManager.setupRecyclerViewSemana(pisoId);
-            final List<TareaModelo> tareasMesList = TareaManager.setupRecyclerViewMes(pisoId);
+            final List<TareaModelo> tareasDiaList = TareasManager.setupRecyclerViewDia(pisoId);
+            final List<TareaModelo> tareasSemanaList = TareasManager.setupRecyclerViewSemana(pisoId);
+            final List<TareaModelo> tareasMesList = TareasManager.setupRecyclerViewMes(pisoId);
 
             runOnUiThreadSafe(() -> {
                 if (tareasDiaList.isEmpty()) {

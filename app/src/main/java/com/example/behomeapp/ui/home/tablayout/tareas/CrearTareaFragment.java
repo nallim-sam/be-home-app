@@ -15,14 +15,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.behomeapp.DBManager.DataBaseManager;
-import com.example.behomeapp.DBManager.TareaManager;
+import com.example.behomeapp.DBManager.TareasManager;
 import com.example.behomeapp.DBManager.UserManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.enums.FrecuenciaEnum;
 import com.example.behomeapp.model.TareaModelo;
 import com.example.behomeapp.util.SharedPreferencesUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Logger;
 
 
@@ -101,16 +104,28 @@ public class CrearTareaFragment extends Fragment {
             case "Mensual":
                 frecuencia = FrecuenciaEnum.MENSUAL;
                 break;
-            case "Ninguna" :
-                frecuencia = FrecuenciaEnum.NINGUNA;
             default:
                 frecuencia = FrecuenciaEnum.NINGUNA; // valor por defecto
+                break;
+        }
+
+
+        // Convertir la fecha al formato 'yyyy-MM-dd'
+        final SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+        final SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        final String fechaFormateada;
+        try {
+            Date date = inputFormat.parse(fecha);
+            fechaFormateada = outputFormat.format(date);
+        } catch (ParseException e) {
+            log.severe("Error al parsear la fecha: " + e.getMessage());
+            return;
         }
 
         // Crear nueva tarea
         TareaModelo tarea = new TareaModelo();
         tarea.setNombre(nombre);
-        tarea.setFechaLimite(fecha);
+        tarea.setFechaLimite(fechaFormateada);
         tarea.setFrecuencia(frecuencia);
         tarea.setCompletado(false);
 
@@ -118,8 +133,11 @@ public class CrearTareaFragment extends Fragment {
         tarea.setIdPiso(DataBaseManager.obtenerPisoId(email));
         tarea.setIdUsuario(UserManager.obtenerUsuarioId(email));
 
-        // Insertar tarea en la base de datos
-        TareaManager.insertarTarea(tarea);
+        if (frecuencia == FrecuenciaEnum.NINGUNA) {
+            TareasManager.insertarTarea(tarea);
+        } else {
+            TareasManager.insertarTareasConFrecuencia(tarea);
+        }
 
         // Regresar al fragmento anterior o cerrar el fragmento actual
         getActivity().getSupportFragmentManager().popBackStack();
