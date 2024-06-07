@@ -58,6 +58,8 @@ public class CrearProductoFragment extends Fragment {
                 // Añadir el nuevo producto a la lista local de productos
                 if (listaProductos != null) {
                     listaProductos.add(nuevoProducto);
+                    // Regresar al fragmento anterior o cerrar el fragmento actual
+                    getActivity().getSupportFragmentManager().popBackStack();
                 } else {
                     log.warning("La lista de productos no está inicializada.");
                 }

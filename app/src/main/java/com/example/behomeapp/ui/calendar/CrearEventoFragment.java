@@ -84,7 +84,7 @@ public class CrearEventoFragment extends Fragment {
         eventoModelo.setNombre(nombre);
         eventoModelo.setFecha(fechaFormateada);
 
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         final String pisoId = DataBaseManager.obtenerPisoId(email);
         final int calendarioId = CalendarManager.obtenerIdCalendario(pisoId);
         eventoModelo.setIdCalendario(calendarioId);

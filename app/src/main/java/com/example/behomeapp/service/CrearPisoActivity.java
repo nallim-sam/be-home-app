@@ -9,10 +9,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.behomeapp.NavActivity;
 import com.example.behomeapp.R;
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.model.PisoModelo;
-import com.example.behomeapp.ui.home.HomeFragment;
+import com.example.behomeapp.util.SharedPreferencesUtils;
 
 import java.security.SecureRandom;
 
@@ -50,6 +51,9 @@ public class CrearPisoActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Crea un objeto Piso y lo inserta en BBDD
+     */
     private void crearPiso() {
 
         final String name = etName.getText().toString().trim();
@@ -63,8 +67,6 @@ public class CrearPisoActivity extends AppCompatActivity {
         final PisoModelo pisoModelo = new PisoModelo();
         pisoModelo.setId(id);
         pisoModelo.setNombre(name);
-
-        //final PisoInserter pisoInserter = new PisoInserter();
 
         final boolean pisoInsertado = dataBaseManager.insertarPiso(pisoModelo);
 
@@ -81,9 +83,14 @@ public class CrearPisoActivity extends AppCompatActivity {
                 editor.putInt("id_calendario", calendarioId);
                 editor.apply();
 
+                SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+                String emailUsuario = sharedPreferences.getString("email", "");
+                // Actualizar el ID del piso para el usuario en la BBDD
+                dataBaseManager.actualizarUsuarioConPisoId(id, emailUsuario);
+
                 // Navegar al HomeFragment
                 runOnUiThread(() -> {
-                    Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);
+                    Intent intent = new Intent(CrearPisoActivity.this, NavActivity.class);
                     startActivity(intent);
                     finish();
                 });
@@ -114,20 +121,18 @@ public class CrearPisoActivity extends AppCompatActivity {
         }
 
         if (dataBaseManager.validarPisoEnBD(pisoId)) {
-            // Guardar id del piso en SharedPreferences
-            SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("id_piso", etId.getText().toString().trim());
-            editor.apply();
 
-            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-            String emailUsuario = sharedPreferences.getString("email", "");
+            // Guardar id del piso en SharedPreferences
+            SharedPreferencesUtils.savePisoId(this, pisoId);
+
+            // Obtener el correo electrónico del usuario desde SharedPreferences
+            String emailUsuario = SharedPreferencesUtils.getUserEmail(this);
 
             // Actualizar el ID del piso para el usuario en la BBDD
             dataBaseManager.actualizarUsuarioConPisoId(etId.getText().toString().trim(), emailUsuario);
 
             // Navegar al HomeFragment
-            Intent intent = new Intent(CrearPisoActivity.this, HomeFragment.class);
+            Intent intent = new Intent(CrearPisoActivity.this, NavActivity.class);
             startActivity(intent);
             finish();
         } else {

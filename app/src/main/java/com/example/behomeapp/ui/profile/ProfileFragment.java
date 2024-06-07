@@ -29,7 +29,7 @@ public class ProfileFragment extends Fragment {
         final Button btnLogout = view.findViewById(R.id.buttonLogout);
 
         new Thread(() -> {
-            final String email = SharedPreferencesUtils.getEmail(requireContext());
+            final String email = SharedPreferencesUtils.getUserEmail(requireContext());
             final String username = UserManager.obtenerNombre(email);
 
             // Actualizar la interfaz de usuario en el hilo principal
@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener( v -> {
             Intent intent = new Intent(requireContext(), LoginActivity.class);
             Toast.makeText(getContext(), "Cerrando Sesión", Toast.LENGTH_SHORT).show();
-            SharedPreferencesUtils.clearCredentials(requireContext());
+            SharedPreferencesUtils.clearAllPreferences(requireContext());
             startActivity(intent);
         });
 

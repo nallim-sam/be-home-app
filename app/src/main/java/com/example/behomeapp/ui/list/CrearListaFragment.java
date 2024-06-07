@@ -52,7 +52,7 @@ public class CrearListaFragment extends Fragment {
         ListaCompraModelo listaCompraModelo = new ListaCompraModelo();
         listaCompraModelo.setNombre(nombreLista);
 
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         final String pisoId = DataBaseManager.obtenerPisoId(email);
 
         ListaManager.insertarLista(nombreLista, pisoId);

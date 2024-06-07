@@ -9,17 +9,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Crear listas de productos y arreglar UTF-8">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/model/DataItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logo2.png" afterDir="false" />
+    <list default="true" id="fdad58e1-384a-4c76-9c5b-b383d19ef823" name="Changes" comment="Mostrar Resumen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/DataBaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/DataBaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/RecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/ResumenAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/DBManager/ListaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/login/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/login/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/login/SignUpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/service/CrearPisoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/service/CrearPisoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CalendarFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CalendarFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CrearEventoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/calendar/CrearEventoFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/ResumenFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/ResumenFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/ViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/ViewPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/CrearTareaFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/CrearTareaFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/home/tablayout/tareas/TareasFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearListaFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearListaFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/CrearProductoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ProductosAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/list/ProductosAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/profile/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/ui/profile/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/util/SharedPreferencesUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/behomeapp/util/SharedPreferencesUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_resumen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_resumen.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_resumen.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,24 +119,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;ScreenRecorder.SavePath&quot;: &quot;C:\\Users\\saraa\\Documents&quot;,
-    &quot;android-custom-viewC:/Users/saraa/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
-    &quot;android-custom-viewC:/Users/saraa/AppData/Local/Android/Sdk/sources/android-34/android/widget/AdapterView.java_SELECTED&quot;: &quot;AdapterView&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/saraa/Documents&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "ScreenRecorder.SavePath": "C:\\Users\\saraa\\Documents\\demo_app",
+    "ScreenshotViewer.SavePath": "C:/Users/saraa/Documents/CapturasApp",
+    "android-custom-viewC:/Users/saraa/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
+    "android-custom-viewC:/Users/saraa/AppData/Local/Android/Sdk/sources/android-34/android/widget/AdapterView.java_SELECTED": "AdapterView",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "last_opened_file_path": "C:/Users/saraa/Documents/demo_app",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\saraa\Documents\AndroidStudioWorkSpace\BeHomeApp\app\libs" />
@@ -353,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717606754095</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Mostrar Resumen">
+      <created>1717610032586</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1717610032586</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -398,6 +413,7 @@
     <MESSAGE value="Crear Tareas Correctamente" />
     <MESSAGE value="Cambiar color cuando una tarea esta completada" />
     <MESSAGE value="Crear listas de productos y arreglar UTF-8" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crear listas de productos y arreglar UTF-8" />
+    <MESSAGE value="Mostrar Resumen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mostrar Resumen" />
   </component>
 </project>

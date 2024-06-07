@@ -1,5 +1,6 @@
 package com.example.behomeapp.ui.list;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.behomeapp.DBManager.ListaManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.model.ProductoModelo;
 
@@ -34,9 +36,16 @@ public class ProductosAdapter extends ArrayAdapter<ProductoModelo> {
         checkBoxProducto.setOnCheckedChangeListener((buttonView, isChecked) -> {
             producto.setComprado(isChecked);
             if (isChecked) {
-                //ListaManager.eliminarProducto(producto.getId());
-                remove(producto);
-                notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                new Thread(() -> {
+                    ListaManager.eliminarProducto(producto.getId());
+
+                    ((Activity) getContext()).runOnUiThread(() -> {
+                        remove(producto);
+                        notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                    });
+
+                }).start();
+
 
             }
         });

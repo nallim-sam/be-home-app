@@ -102,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                 mainHandler.post(() -> {
                     if (filasInsertadas > 0) {
 
-                        SharedPreferencesUtils.saveUserData(SignUpActivity.this, txtEmail);
+                        SharedPreferencesUtils.saveUserEmail(SignUpActivity.this, txtEmail);
 
                         Toast.makeText(SignUpActivity.this, "Registrándose", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignUpActivity.this, CrearPisoActivity.class);

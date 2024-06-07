@@ -35,7 +35,7 @@ public class ListFragment extends Fragment {
         final FloatingActionButton fabAddList = view.findViewById(R.id.button_add_list);
 
         // Obtener idPiso de SharedPreferences
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         if (email.isEmpty()) {
             log.info("El email NO se ha obtenido correctamente de sharedPreferences");
         }

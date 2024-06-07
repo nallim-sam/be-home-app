@@ -129,7 +129,7 @@ public class CrearTareaFragment extends Fragment {
         tarea.setFrecuencia(frecuencia);
         tarea.setCompletado(false);
 
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         tarea.setIdPiso(DataBaseManager.obtenerPisoId(email));
         tarea.setIdUsuario(UserManager.obtenerUsuarioId(email));
 

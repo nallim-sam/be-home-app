@@ -48,7 +48,7 @@ public class CalendarFragment extends Fragment {
 
         recyclerViewEvents.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
 
         new Thread(() -> {
             final String pisoId = DataBaseManager.obtenerPisoId(email);

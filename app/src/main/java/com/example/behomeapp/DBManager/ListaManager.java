@@ -37,10 +37,6 @@ public class ListaManager {
             "VALUES (?, ?)";
     private static final String DELETE_PRODUCTO_QUERY = "DELETE FROM Producto WHERE id = ?";
     private static final String DELETE_RELACION_QUERY = "DELETE FROM ListaCompra_Producto WHERE id_producto = ?";
-    private static final String OBTENER_ID_PRODUCTO_QUERY = "SELECT p.id AS id_producto " +
-            "FROM Producto p " +
-            "INNER JOIN ListaCompra_Producto lcp ON p.id = lcp.id_producto " +
-            "WHERE p.nombre = ? AND lcp.id_lista = ?";
 
 
     public static List<ListaCompraModelo> obtenerListasCompras(String pisoId) {
@@ -177,11 +173,13 @@ public class ListaManager {
              PreparedStatement preparedStatementProducto = connection.prepareStatement(DELETE_PRODUCTO_QUERY);
              PreparedStatement preparedStatementRelacion = connection.prepareStatement(DELETE_RELACION_QUERY)) {
 
+            preparedStatementRelacion.setInt(1, productoId);
+            int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
+
             preparedStatementProducto.setInt(1, productoId);
             int rowsAffectedProducto = preparedStatementProducto.executeUpdate();
 
-            preparedStatementRelacion.setInt(1, productoId);
-            int rowsAffectedRelacion = preparedStatementRelacion.executeUpdate();
+
 
             if (rowsAffectedProducto > 0) {
                 log.info("Producto eliminado exitosamente.");
@@ -198,27 +196,6 @@ public class ListaManager {
             throw new RuntimeException("Error al eliminar el producto.", e);
         }
 
-    }
-
-    public static int obtenerIdProducto(String nombreProducto, int idLista) {
-        int idProducto = -1; // Valor predeterminado si no se encuentra ningún producto
-
-        try (final Connection connection = ConnectionService.getConnection();
-             final PreparedStatement preparedStatement = connection.prepareStatement(OBTENER_ID_PRODUCTO_QUERY)) {
-
-            preparedStatement.setString(1, nombreProducto);
-            preparedStatement.setInt(2, idLista);
-
-            try (final ResultSet rs = preparedStatement.executeQuery()) {
-                if (rs.next()) {
-                    idProducto = rs.getInt("id_producto");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return idProducto;
     }
 
 }

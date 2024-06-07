@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        SharedPreferencesUtils.clearAllPreferences(this);
+
         editTextEmail = findViewById(R.id.etSignInEmail);
         editTextPassword = findViewById(R.id.etSignInPassword);
 
@@ -73,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (resultSet.next()) {
                     runOnUiThread(() -> {
 
-                        SharedPreferencesUtils.saveUserData(LoginActivity.this, email);
+                        SharedPreferencesUtils.saveUserEmail(LoginActivity.this, email);
 
                         Toast.makeText(LoginActivity.this, "Iniciando sesión", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NavActivity.class);

@@ -44,7 +44,7 @@ public class ResumenFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Obtener idPiso de SharedPreferences
-        final String email = SharedPreferencesUtils.getEmail(requireContext());
+        final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         if (email == null || email.isEmpty()) {
             log.info("El email NO se ha obtenido correctamente de sharedPreferences");
             return view;
