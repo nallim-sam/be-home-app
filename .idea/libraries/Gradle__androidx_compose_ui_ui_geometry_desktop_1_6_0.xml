@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.ui:ui-geometry-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.ui/ui-geometry-desktop/1.6.0/7ced595038964695958e7c026fef41252b196a68/ui-geometry-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.ui/ui-geometry-desktop/1.6.0/2b167ccf642bf99c919cfa98bee1676e8335d1dc/ui-geometry-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

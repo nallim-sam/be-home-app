@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.material:material-icons-core-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material/material-icons-core-desktop/1.6.0/42c2507ef6b0457ea325d626c8e78a412aaffce/material-icons-core-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material/material-icons-core-desktop/1.6.0/e518df0d8a19c3833f72a24ff667853015e340fd/material-icons-core-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

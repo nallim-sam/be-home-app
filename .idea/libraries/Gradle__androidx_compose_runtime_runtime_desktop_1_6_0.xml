@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.runtime:runtime-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-desktop/1.6.0/a3bf2becdecff9e2d06b50b18370837206b6ac9e/runtime-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-desktop/1.6.0/eafe90161843b26fa8f7a4a4f19510fe58370ee0/runtime-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

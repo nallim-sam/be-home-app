@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.skiko:skiko-awt:0.7.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-awt/0.7.7/f280a5d3abeb1e710e78ad1c5a82e1f00affdaa5/skiko-awt-0.7.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-awt/0.7.7/f8db526c620100303c317ea56caa2ffb2c8e5f3b/skiko-awt-0.7.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-awt/0.7.7/235af5596debf28939a295613bd6392ce3bcb39f/skiko-awt-0.7.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.material3:material3-desktop:1.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material3/material3-desktop/1.2.1/d8e381c465466d16c573d8ecfc96c3ed45988276/material3-desktop-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material3/material3-desktop/1.2.1/9c1edcbfbe266a48ad54b6854bfaf0ef08f92fca/material3-desktop-1.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.ui:ui-util-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.ui/ui-util-desktop/1.6.0/d6c95177865673af1b9c7acfb567cbf80b2fe597/ui-util-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.ui/ui-util-desktop/1.6.0/ec21807cb84d7f0205d8ddd8795e2fc49e40c1f8/ui-util-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

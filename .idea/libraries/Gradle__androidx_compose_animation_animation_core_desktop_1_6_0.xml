@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.animation:animation-core-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.animation/animation-core-desktop/1.6.0/8f46479433637af784e42254cf365366445bb6ef/animation-core-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.animation/animation-core-desktop/1.6.0/5f026cb93792662e01612535678aa86a11d74cde/animation-core-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

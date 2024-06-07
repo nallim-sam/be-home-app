@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.foundation:foundation-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.foundation/foundation-desktop/1.6.0/30bb37af86a49d6df06893d2948619febde0cfab/foundation-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.foundation/foundation-desktop/1.6.0/2831f493bbfe7555368e25ff649bb7c507d5546f/foundation-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.compose.material:material-ripple-desktop:1.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material/material-ripple-desktop/1.6.0/80a7728364c8da5c6b83cf6139a7733c8f58f429/material-ripple-desktop-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.material/material-ripple-desktop/1.6.0/d791f88ff2b1aefc84b2f6cce4ddf0f81d761649/material-ripple-desktop-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
