@@ -39,6 +39,8 @@ public class ListaManager {
     private static final String DELETE_RELACION_QUERY = "DELETE FROM ListaCompra_Producto WHERE id_producto = ?";
 
 
+
+
     public static List<ListaCompraModelo> obtenerListasCompras(String pisoId) {
 
         final List<ListaCompraModelo> listaComprasList = new ArrayList<>();

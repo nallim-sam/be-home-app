@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.behomeapp.DBManager.ListaManager;
 import com.example.behomeapp.R;
@@ -58,6 +59,8 @@ public class CrearProductoFragment extends Fragment {
                 // Añadir el nuevo producto a la lista local de productos
                 if (listaProductos != null) {
                     listaProductos.add(nuevoProducto);
+                    Toast.makeText(getContext(), "Producto añadido", Toast.LENGTH_LONG).show();
+
                     // Regresar al fragmento anterior o cerrar el fragmento actual
                     getActivity().getSupportFragmentManager().popBackStack();
                 } else {

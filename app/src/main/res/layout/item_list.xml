@@ -8,19 +8,31 @@
     app:cardElevation="4dp"
     app:cardBackgroundColor="@color/lightGreen">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tvListName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Item Name"
+            android:layout_centerVertical="true"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/imageViewEliminarLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:contentDescription="Eliminar Lista"
+            android:onClick="eliminarLista"
+            android:padding="8dp"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
+
 </androidx.cardview.widget.CardView>
