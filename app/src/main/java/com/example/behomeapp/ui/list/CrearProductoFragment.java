@@ -1,5 +1,6 @@
 package com.example.behomeapp.ui.list;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -35,7 +36,15 @@ public class CrearProductoFragment extends Fragment {
         final Button buttonAddProducto = view.findViewById(R.id.buttonAddProducto);
         final Button buttonVolver = view.findViewById(R.id.buttonVolver);
 
-        buttonAddProducto.setOnClickListener(v -> new Thread(this::crearProducto).start());
+        buttonAddProducto.setOnClickListener(v -> new Thread(() -> {
+            crearProducto();
+            requireActivity().runOnUiThread(() -> {
+                Toast.makeText(getContext(), "Producto añadido", Toast.LENGTH_LONG).show();
+                getActivity().getSupportFragmentManager().popBackStack();
+            });
+
+        }).start());
+
         buttonVolver.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         return view;
@@ -59,10 +68,6 @@ public class CrearProductoFragment extends Fragment {
                 // Añadir el nuevo producto a la lista local de productos
                 if (listaProductos != null) {
                     listaProductos.add(nuevoProducto);
-                    Toast.makeText(getContext(), "Producto añadido", Toast.LENGTH_LONG).show();
-
-                    // Regresar al fragmento anterior o cerrar el fragmento actual
-                    getActivity().getSupportFragmentManager().popBackStack();
                 } else {
                     log.warning("La lista de productos no está inicializada.");
                 }
@@ -80,6 +85,18 @@ public class CrearProductoFragment extends Fragment {
      */
     public void setListaProductos(List<ProductoModelo> listaProductos) {
         this.listaProductos = listaProductos;
+    }
+
+    /**
+     * Método auxiliar para ejecutar en el hilo principal de forma segura
+     *
+     * @param action objeto de la interfaz funcional Runnable
+     */
+    private void runOnUiThreadSafe(Runnable action) {
+        Activity activity = getActivity();
+        if (activity != null) {
+            activity.runOnUiThread(action);
+        }
     }
 
 

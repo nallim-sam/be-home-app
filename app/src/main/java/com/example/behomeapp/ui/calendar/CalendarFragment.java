@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.behomeapp.DBManager.CalendarManager;
+import com.example.behomeapp.DBManager.CalendarioManager;
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.model.EventoModelo;
@@ -82,7 +82,7 @@ public class CalendarFragment extends Fragment {
 
         // Obtener eventos de la base de datos y actualizar el RecyclerView
         new Thread(() -> {
-            List<EventoModelo> eventos = CalendarManager.obtenerEventosPorFecha(pisoId, date);
+            List<EventoModelo> eventos = CalendarioManager.obtenerEventosPorFecha(pisoId, date);
             requireActivity().runOnUiThread(() -> {
                 eventosAdapter = new EventosAdapter(getContext(), eventos);
                 recyclerViewEvents.setAdapter(eventosAdapter);

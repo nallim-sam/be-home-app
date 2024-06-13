@@ -69,7 +69,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewSemana"
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
+                android:layout_height="102dp"
                 android:layout_below="@id/recyclerViewDia"
                 android:layout_marginTop="8dp" />
 
@@ -102,7 +102,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewMes"
                 android:layout_width="match_parent"
-                android:layout_height="79dp"
+                android:layout_height="98dp"
                 android:layout_below="@id/recyclerViewSemana"
                 android:layout_marginTop="8dp" />
 

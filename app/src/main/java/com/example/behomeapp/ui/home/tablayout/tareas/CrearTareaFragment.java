@@ -13,10 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.DBManager.TareasManager;
-import com.example.behomeapp.DBManager.UserManager;
+import com.example.behomeapp.DBManager.UsuarioManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.enums.FrecuenciaEnum;
 import com.example.behomeapp.model.TareaModelo;
@@ -59,9 +60,15 @@ public class CrearTareaFragment extends Fragment {
         editTextFecha.setOnClickListener(v -> showDatePickerDialog());
 
         // Configurar el botón de crear tarea
-        buttonCrearTarea.setOnClickListener(v -> {
-            new Thread(this::crearTarea).start();
-        });
+        buttonCrearTarea.setOnClickListener(v -> new Thread(() -> {
+            crearTarea();
+            requireActivity().runOnUiThread(() -> {
+                Toast.makeText(getContext(), "Tarea añadida", Toast.LENGTH_LONG).show();
+
+                // Regresar al fragmento anterior o cerrar el fragmento actual
+                getActivity().getSupportFragmentManager().popBackStack();
+            });
+        }).start());
 
         buttonVolver.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
@@ -131,7 +138,7 @@ public class CrearTareaFragment extends Fragment {
 
         final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         tarea.setIdPiso(DataBaseManager.obtenerPisoId(email));
-        tarea.setIdUsuario(UserManager.obtenerUsuarioId(email));
+        tarea.setIdUsuario(UsuarioManager.obtenerUsuarioId(email));
 
         if (frecuencia == FrecuenciaEnum.NINGUNA) {
             TareasManager.insertarTarea(tarea);
@@ -139,7 +146,5 @@ public class CrearTareaFragment extends Fragment {
             TareasManager.insertarTareasConFrecuencia(tarea);
         }
 
-        // Regresar al fragmento anterior o cerrar el fragmento actual
-        getActivity().getSupportFragmentManager().popBackStack();
     }
 }

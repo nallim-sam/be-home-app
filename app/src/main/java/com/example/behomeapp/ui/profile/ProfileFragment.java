@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.behomeapp.DBManager.UserManager;
+import com.example.behomeapp.DBManager.UsuarioManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.login.LoginActivity;
 import com.example.behomeapp.util.SharedPreferencesUtils;
@@ -30,7 +30,7 @@ public class ProfileFragment extends Fragment {
 
         new Thread(() -> {
             final String email = SharedPreferencesUtils.getUserEmail(requireContext());
-            final String username = UserManager.obtenerNombre(email);
+            final String username = UsuarioManager.obtenerNombre(email);
 
             // Actualizar la interfaz de usuario en el hilo principal
             requireActivity().runOnUiThread(() -> {

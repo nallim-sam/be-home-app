@@ -24,16 +24,13 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
-                android:id="@+id/mensajeTextView"
+                android:id="@+id/textViewNoResumen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:text="No hay datos disponibles"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:visibility="gone" />
-
+                android:text="Todavía no has creado ninguna tarea ni evento"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:textColor="@android:color/black" />
 
             <View
                 android:layout_marginTop="16dp"

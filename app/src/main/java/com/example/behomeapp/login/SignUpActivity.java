@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.behomeapp.R;
 import com.example.behomeapp.service.ConnectionService;
-import com.example.behomeapp.service.CrearPisoActivity;
 import com.example.behomeapp.util.SharedPreferencesUtils;
 
 import java.sql.Connection;

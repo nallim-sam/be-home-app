@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="BeHome"
+        android:textStyle="bold"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/etSignInEmail"
         app:layout_constraintEnd_toEndOf="parent"

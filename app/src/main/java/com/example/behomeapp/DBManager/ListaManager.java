@@ -16,27 +16,27 @@ public class ListaManager {
 
     private static final Logger log = Logger.getLogger(ListaManager.class.getName());
     private static final String OBTENER_LISTAS_QUERY = "SELECT * " +
-            "FROM listacompra " +
+            "FROM lista " +
             "WHERE id_piso = ?";
 
     private static final String OBTENER_ID_QUERY = "SELECT * " +
-            "FROM listacompra " +
+            "FROM lista " +
             "WHERE id_piso = ? " +
             "AND nombre = ?";
 
     private static final String OBTENER_PRODUCTOS_QUERY = "SELECT p.id, p.nombre " +
             "FROM Producto p " +
-            "JOIN listacompra_producto lcp " +
+            "JOIN lista_producto lcp " +
             "ON p.id = lcp.id_producto " +
             "WHERE lcp.id_lista = ?";
-    private static final String INSERTAR_LISTA_QUERY = "INSERT INTO ListaCompra (nombre, id_piso) " +
+    private static final String INSERTAR_LISTA_QUERY = "INSERT INTO lista (nombre, id_piso) " +
             "VALUES (?, ?)";
     private static final String INSERTAR_PRODUCTO_QUERY = "INSERT INTO Producto (nombre) " +
             "VALUES (?)";
-    private static final String INSERTAR_LISTA_PRODUCTO_QUERY = "INSERT INTO ListaCompra_Producto (id_lista, id_producto) " +
+    private static final String INSERTAR_LISTA_PRODUCTO_QUERY = "INSERT INTO Lista_Producto (id_lista, id_producto) " +
             "VALUES (?, ?)";
     private static final String DELETE_PRODUCTO_QUERY = "DELETE FROM Producto WHERE id = ?";
-    private static final String DELETE_RELACION_QUERY = "DELETE FROM ListaCompra_Producto WHERE id_producto = ?";
+    private static final String DELETE_RELACION_QUERY = "DELETE FROM Lista_Producto WHERE id_producto = ?";
 
 
 

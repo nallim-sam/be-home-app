@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.behomeapp.DBManager.CalendarManager;
+import com.example.behomeapp.DBManager.CalendarioManager;
 import com.example.behomeapp.DBManager.DataBaseManager;
 import com.example.behomeapp.R;
 import com.example.behomeapp.model.EventoModelo;
@@ -86,11 +86,11 @@ public class CrearEventoFragment extends Fragment {
 
         final String email = SharedPreferencesUtils.getUserEmail(requireContext());
         final String pisoId = DataBaseManager.obtenerPisoId(email);
-        final int calendarioId = CalendarManager.obtenerIdCalendario(pisoId);
+        final int calendarioId = CalendarioManager.obtenerIdCalendario(pisoId);
         eventoModelo.setIdCalendario(calendarioId);
 
         // OBTENER ID CALENDARIO
-        CalendarManager.insertarEvento(eventoModelo);
+        CalendarioManager.insertarEvento(eventoModelo);
 
         // Regresar al fragmento anterior o cerrar el fragmento actual
         //getActivity().getSupportFragmentManager().popBackStack();

@@ -4,7 +4,7 @@ import com.example.behomeapp.enums.FrecuenciaEnum;
 
 
 public class TareaModelo {
-    private String id;
+    private int id;
     private String nombre;
     private String idUsuario;
     private String idPiso;
@@ -20,11 +20,11 @@ public class TareaModelo {
         this.completado = completado;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

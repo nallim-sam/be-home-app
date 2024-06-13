@@ -28,7 +28,6 @@ public class ResumenFragment extends Fragment {
 
     private static final Logger log = Logger.getLogger(ResumenFragment.class.getName());
     private static final String ERROR_TEXT = "ID del piso no disponible";
-    private static final String NO_DATA_TEXT = "No hay datos disponibles";
 
     private ResumenAdapter adapter;
 
@@ -40,7 +39,9 @@ public class ResumenFragment extends Fragment {
 
         final TextView idTextView = view.findViewById(R.id.idFromDB);
         final RecyclerView recyclerView = view.findViewById(R.id.resumen);
-        final TextView mensajeTextView = view.findViewById(R.id.mensajeTextView);
+
+        final TextView textViewNoResumen = view.findViewById(R.id.textViewNoResumen);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Obtener idPiso de SharedPreferences
@@ -64,21 +65,19 @@ public class ResumenFragment extends Fragment {
 
             final List<DataItem> data = DataBaseManager.extractDataHome(pisoId);
 
-            if (data == null) {
-                log.info("No se encontraron datos para el ID del piso proporcionado.");
-                requireActivity().runOnUiThread(() -> {
-                    mensajeTextView.setText(NO_DATA_TEXT);
-                    mensajeTextView.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
-                });
-                return;
-            }
 
             requireActivity().runOnUiThread(() -> {
-                adapter = new ResumenAdapter(getContext(), data);
-                recyclerView.setAdapter(adapter);
-                mensajeTextView.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
+                if (data.isEmpty()) {
+                    textViewNoResumen.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+
+                } else {
+                    adapter = new ResumenAdapter(getContext(), data);
+                    recyclerView.setAdapter(adapter);
+                    textViewNoResumen.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+
             });
         }).start();
 

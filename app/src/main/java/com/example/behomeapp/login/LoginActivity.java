@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     });
                 } else {
-                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_LONG).show());
+                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Email o contraseña incorrectos", Toast.LENGTH_LONG).show());
                 }
 
                 resultSet.close();
